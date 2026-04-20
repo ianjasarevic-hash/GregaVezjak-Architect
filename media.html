@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Media — Grega Vezjak Architecture</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "on-tertiary-container": "#4c4a46",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary": "#605e5a",
+                        "outline": "#7c766c",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f0ec",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484742",
+                        "surface-container-highest": "#e4e2de",
+                        "on-secondary-container": "#626363",
+                        "tertiary-fixed": "#e6e2dc",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#695d43",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "tertiary-container": "#bdbab4",
+                        "outline-variant": "#cdc5b9",
+                        "surface-variant": "#e4e2de",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-surface": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-low": "#f5f3ef",
+                        "surface": "#fbf9f5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#544931",
+                        "on-primary-fixed-variant": "#50462e",
+                        "surface-bright": "#fbf9f5",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "tertiary-fixed-dim": "#cac6c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-background": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "secondary-container": "#e0dfdf",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#d4c5a5",
+                        "surface-tint": "#695d43",
+                        "primary-fixed": "#f1e1c0",
+                        "on-primary-fixed": "#221b06",
+                        "primary-fixed-dim": "#d4c5a5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "newsreader": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .media-entry {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .media-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .media-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #695d43; /* primary color */
+            transition: width 0.3s ease;
+        }
+
+        .media-entry:hover .media-title::after {
+            width: 100%;
+        }
+
+        .media-entry:hover {
+            transform: translateX(10px);
+        }
+
+        @media (max-width: 768px) {
+            .media-entry:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-surface-container-low text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl transition-transform duration-500">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-4">
+            <a class="font-['Newsreader'] text-2xl font-normal text-[#1A1A1A] tracking-tighter" href="index.html">GVA</a>
+            <div class="hidden md:flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="work.html">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="news.html">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="profile.html">Profile</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#C8B99A] border-b border-[#C8B99A] pb-1 transition-colors duration-300" href="media.html">Media</a>
+            </div>
+            <button id="mobile-menu-open" class="md:hidden text-[#1A1A1A]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#F5F3EF]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="index.html">Home</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="work.html">Work</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="news.html">News</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="profile.html">Profile</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="media.html">Media</a>
+    </div>    <main class="pt-40 pb-24 px-8 md:px-20 max-w-[1400px] mx-auto">
+        <!-- Section Heading -->
+        <header class="mb-24 reveal">
+            <h1 class="font-headline text-[48px] md:text-[64px] font-light leading-none tracking-tight italic">Media & Press</h1>
+            <div class="w-24 h-[1px] bg-outline-variant mt-8"></div>
+        </header>
+
+        <!-- Media List Section -->
+        <section class="max-w-5xl mx-auto space-y-24 mb-32">
+            <!-- 2023 -->
+            <div class="reveal">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.4em] text-outline mb-10 border-b border-outline-variant/50 pb-4">2023</h3>
+                <div class="space-y-4">
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://youtu.be/c9-j5gCkl0o?si=UB9peSt-XHfCUiQ-" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Tri Ân Monument Dedication Ceremony Honoring Vietnam War Veterans</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Ceremony Video</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Oct 20, 2023</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.youtube.com/watch?v=DU63xPCCXh4" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Jeffersontown monument honors lives lost during Vietnam War</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">WHAS11</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Oct 9, 2023</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.youtube.com/watch?v=WswoOLABtmA" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Jeffersontown unveils $2.3 million monument honoring Vietnam War veterans</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">WDRB News – Official</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Oct 10, 2023</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.wave3.com/2023/10/09/tri-an-monument-dedicated-veterans-memorial-park/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Tri Ân Monument dedicated in Veterans Memorial Park</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">WAVE</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Oct 9, 2023</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://eu.courier-journal.com/picture-gallery/news/local/2023/10/10/tri-an-monument-dedication-ceremony-held-at-veterans-memorial-park/71128776007/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">The Tri Ân Monument Dedication Ceremony held to honor Vietnam War veterans</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Louisville Courier Journal</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Oct 10, 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2022 -->
+            <div class="reveal">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.4em] text-outline mb-10 border-b border-outline-variant/50 pb-4">2022</h3>
+                <div class="space-y-4">
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://eu.courier-journal.com/story/news/local/2022/12/18/what-planned-louisville-vietnam-war-monument-means-to-local-veterans/69729751007/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">What Jeffersontown’s planned Vietnam War memorial means to veterans who served</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Louisville Courier Journal</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Dec 18, 2022</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://localtoday.news/ky/new-memorial-in-jeffersontown-will-honor-vietnam-veterans-61651.html" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">New Memorial in Jeffersontown Will Honor Vietnam Veterans</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Kentucky News</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Dec 15, 2022</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.wave3.com/2022/12/15/groundbreaking-ceremony-held-new-monument-honoring-vietnam-war-veterans/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Groundbreaking ceremony held for new monument honoring Vietnam War veterans</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Wave</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Dec 15, 2022</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.youtube.com/watch?v=eh2kgeQB8oI" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Veterans, officials & community members break ground on the Tri An Foundation’s monument</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">LouisvilleMetroTV</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Dec 15, 2022</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2019 -->
+            <div class="reveal">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.4em] text-outline mb-10 border-b border-outline-variant/50 pb-4">2019</h3>
+                <div class="space-y-4">
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://boatingnz.co.nz/river-of-healing/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">River of healing</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Boating New Zealand</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">April 30, 2019</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.youtube.com/watch?v=shc-MpSrK38" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Prince William Wreath Laying at the Earthquake National Memorial</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">RNZ</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">April 25, 2019</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.youtube.com/watch?v=UfSVCYiUYMc" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Canterbury Earthquake National Memorial</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Chris Lynch Media</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 22, 2019</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2018 -->
+            <div class="reveal">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.4em] text-outline mb-10 border-b border-outline-variant/50 pb-4">2018</h3>
+                <div class="space-y-4">
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://radio.ognjisce.si/sl/202/slovenija/27233/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Kakšen spomenik žrtvam totalitarizmov bi stal v Bruslju?</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Radio Ognjišče</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">May 29, 2018</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2017 -->
+            <div class="reveal">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.4em] text-outline mb-10 border-b border-outline-variant/50 pb-4">2017</h3>
+                <div class="space-y-4">
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.propertynz.co.nz/news/property-council-awards-celebrate-south-island-s-uniqueness" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Property Council awards celebrate the South Island’s uniqueness</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Press Release</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Nov 10, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://m.viendongdaily.com/dai-tuong-niem-chien-si-viet-my-dang-duoc-xay-tai-kentucky-NnptavGw.html" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Đài tưởng niệm chiến sĩ Việt-Mỹ đang được xây tại Kentucky</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Viện Đởng Daily News</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">June 26, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.wdrb.com/story/35698254/vietnam-veterans-honored-by-new-jeffersontown-memorial" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Vietnam veterans honored by new Jeffersontown memorial</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">WDRB News</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">June 19, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://competitions.org/2017/06/remembrance-on-the-pacific-rim-the-canterbury-earthquake-memorial-dedication/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Remembrance on the Pacific Rim: The Canterbury Earthquake Memorial Dedication</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Competitions</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">June 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.homestolove.co.nz/inside-homes/news/christchurch-earthquake-memorial" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Behind the design of the Christchurch earthquake memorial</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Home Magazine</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">April 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.glasslovenije.com.au/verweb/Misli/misli2017/misliMarchApril%202017.pdf" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Slovenski arhitekt Grega Vezjak žrtvam potresa na Novi Zelandiji</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Misli</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">March – April 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.star.kiwi/2017/03/the-canterbury-memorial-wall-journey/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Watch: The Canterbury earthquake memorial wall journey</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">CTV</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">March 16, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.slovenskenovice.si/novice/slovenija/slovenec-po-potresu-postavil-zid-spomina" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Slovenec po potresu postavil Zid spomina</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Slovenske novice</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">March 9, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.stuff.co.nz/southland-times/news/89781745/reflections-at-the-canterbury-earthquake-national-memorial" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Reflections at the Canterbury Earthquake National Memorial</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">The Southland Times</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">March 2, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://vimeo.com/204803191" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">DOCUMENTARY: A Place to Remember</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Ōtākaro Limited</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.stuff.co.nz/dominion-post/comment/editorials/89766513/editorial-a-fitting-monument-to-the-catastrophe-of-the-canterbury-earthquake" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Editorial: a fitting monument to the catastrophe</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">The Dominion Post</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 25, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.mindfood.com/article/six-years-on-christchurch-honours-earthquake-victims/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Six years on, Christchurch honours earthquake victims</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Mindfood</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 23, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.stuff.co.nz/the-press/news/christchurch-earthquake-2011/89638351/christchurch-earthquake-memorial-draws-on-rich-tradition-of-memorials-around-the-world" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Rich tradition of memorials around the world</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">The Press</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 22, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.radionz.co.nz/news/national/325048/memorial-for-canterbury-quake-victims-unveiled" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Memorial for Canterbury quake victims unveiled</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Radio New Zealand</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 22, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.canberra.veleposlanistvo.si/index.php?id=1332&amp;L=1&amp;tx_ttnews%5Btt_news%5D=29401&amp;cHash=850bd0812c36e2cfde3fc181ae61bf38" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Slovenian Ambassador attended National Dedication</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Embassy of Slovenia</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 22, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.seattletimes.com/nation-world/new-zealand-unveils-national-memorial-for-quake-victims/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">New Zealand unveils national memorial for quake victims</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">The Seattle Times</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 22, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://media.weibo.cn/article?id=2309351000094077988084906702&amp;jumpfrom=weibocom" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Names of dead unveiled on Christchurch quake memorial</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Weibo</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 22, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.newstalkzb.co.nz/news/national/six-years-on-christchurch-moving-forward/.WQOn4hmZUPI.mailto" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Six years on: Christchurch moving forward</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Newstalk ZB</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 22, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.stuff.co.nz/the-press/news/89660143/it-brought-tears-to-my-eyes-quake-memorial-opened-to-emotional-families" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Quake memorial opened to emotional families</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">The Press</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 22, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.stuff.co.nz/national/89705306/christchurchs-earthquake-legacy-enters-new-age-with-memorial-unveiling" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Christchurch’s legacy enters new age</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Stuff</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 22, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://beta.rs/vesti/drustvo-vesti-svet/54896-memorijalni-zid-na-novom-zelandu-u-znak-secanja-na-zrtve-zemljotresa" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Memorijalni zid na Novom Zelandu</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Beta</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 22, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.stuff.co.nz/the-press/news/christchurch-earthquake-2011/89668373/canterbury-earthquake-memorial-unveilng-six-years-on" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">‘A place to grieve and hope’ – English</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">The Press</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 22, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://webun.jp/item/7347789" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">「安らぎ感じる場に」　ＮＺ地震・国立追悼施設</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Webun</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 21, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.youtube.com/watch?v=ucGvYHh7jpA" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Families attend Chch earthquake memorial unveiling</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Radio New Zealand</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 21, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.tvnz.co.nz/one-news/new-zealand/up-close-canterbury-earthquake-national-memorial" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Up close to the Canterbury Earthquake Memorial</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">One News</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 21, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.tvnz.co.nz/one-news/new-zealand/wish-you-were-here-children-leave-heartfelt-messages-their-parents-killed-in-christchurch-earthquake" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">‘I wish you were here’ – heartfelt messages</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">One News</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 21, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.tvnz.co.nz/one-news/new-zealand/touching-tribute-185-canterbury-quake-victims-memorialised-wall-unveiled-families" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Touching tribute – 185 victims memorialised</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">One News</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 21, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.tvnz.co.nz/one-news/new-zealand/japanese-visit-christchurch-first-time-since-quake-killed-their-family-members" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Japanese visit Christchurch for first time</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">One News</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 21, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.stuff.co.nz/the-press/business/the-rebuild/89587113/christchurch-earthquake-memorial-designer-grega-vezjak-wins-another-memorial-competition-in-kentucky" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Grega Vezjak wins another memorial competition</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">The Press</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 20, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.stuff.co.nz/the-press/business/the-rebuild/89465766/christchurch-earthquake-memorial-how-it-works-and-what-to-look-for" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Earthquake memorial: How it works</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">The Press</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 20, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://vimeo.com/204831825" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Canterbury Earthquake National Memorial timelapse</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Ōtākaro Limited</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.ccc.govt.nz/the-council/newsline/show/1368" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Earthquake memorial a ‘place to remember’</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Christchurch City Council</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 7, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.noted.co.nz/life/life-in-nz/to-love-and-loss-christchurchs-new-earthquake-memorial/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">To love and loss: Christchurch’s new memorial</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">North & South</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 7, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.ccc.govt.nz/the-council/newsline/show/1325" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Designer hopes quake memorial will be place of solace</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Christchurch City Council</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Jan 30, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://competitions.org/2017/01/a-symbol-of-gratitude-the-tri-an-monument-competition/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">A Symbol of Gratitude: The Tri An Monument</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Competitions</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Jan 20, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.courier-journal.com/story/news/local/2017/01/11/j-town-monument-tribute-vietnam-war/96405048/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">J-town monument a tribute to Vietnam War</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Courier-Journal</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Jan 11, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.stuff.co.nz/the-press/business/the-rebuild/88174522/Canterbury-earthquake-memorial-to-open-for-February-22-2017-anniversary" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Canterbury earthquake memorial to open for anniversary</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">The Press</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Jan 6, 2017</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2016 -->
+            <div class="reveal">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.4em] text-outline mb-10 border-b border-outline-variant/50 pb-4">2016</h3>
+                <div class="space-y-4">
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.delo.si/gospodarstvo/kariera/se-mu-po-novi-zelandiji-obeta-se-projekt-v-zda.html" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Se mu po Novi Zelandiji obeta še projekt v ZDA?</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Delo</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Oct 7, 2016</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.youtube.com/watch?v=e9dVbl3UowI" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Design and location of the Canterbury Earthquake Memorial</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">CERA</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">April 17, 2016</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://vimeo.com/156788552" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Canterbury Earthquake National Memorial 3d visualisation</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Buildmedia</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Feb 25, 2016</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2015 -->
+            <div class="reveal">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.4em] text-outline mb-10 border-b border-outline-variant/50 pb-4">2015</h3>
+                <div class="space-y-4">
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://architecturenow.co.nz/articles/critique-of-the-unbuilt/" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Critique of the unbuilt</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Architecture Now</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Nov 25, 2015</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.radionz.co.nz/news/regional/289496/work-starts-on-christchurch%27s-quake-memorial" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Work starts on Christchurch’s quake memorial</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Radio New Zealand</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">Nov 12, 2015</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.primorske.si/Plus/Sobota/Arhitektura-je-univerzalen-jezik" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Arhitektura je univerzalen jezik</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Primorske novice</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">June 13, 2015</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.slovenskenovice.si/lifestyle/bivanje/ni-prisel-ni-videl-je-zmagal-na-arhitekturnem-razpisu" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Ni prišel, ni videl, a je zmagal na razpisu</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Slovenske novice</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">May 21, 2015</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.stuff.co.nz/the-press/opinion/68530458/editorial-most-important-for-quake-memorial-is-the-names" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Editorial: Most important is the names</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">The Press</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">May 14, 2015</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="http://www.radionz.co.nz/news/regional/273566/winning-design-for-quake-memorial-unveiled" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Winning design for quake memorial unveiled</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Radio New Zealand</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">May 13, 2015</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://youtu.be/_cb8I4OYdY0" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">Earthquake Memorial</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">CTV – Canterbury Television</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">May 12, 2015</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="media-entry group">
+                        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 py-8 border-b border-outline-variant/20 px-6 -mx-6 transition-all duration-500 hover:bg-[#F0EEEA]">
+                            <div class="flex-1">
+                                <a href="https://www.youtube.com/watch?v=mXyTvFnIbUo" class="media-title font-headline text-[24px] md:text-[32px] leading-tight block mb-2 transition-colors duration-500 group-hover:text-primary" target="_blank">EQM 2378 – The Memorial Wall</a>
+                                <p class="font-body text-[14px] text-secondary/70 uppercase tracking-widest">Slideshow Presentation</p>
+                            </div>
+                            <div class="flex flex-col md:items-end min-w-[150px]">
+                                <span class="font-label text-[12px] tracking-widest text-outline">2015</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Archive Button -->
+        <div class="mt-24 flex justify-center reveal">
+            <a href="work.html" class="font-label text-[12px] uppercase tracking-[0.4em] border border-outline-variant px-12 py-5 hover:bg-[#1A1A1A] hover:text-white transition-all duration-500">
+                Back to Work
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-[#F5F3EF] px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br/>
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com" class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br/>
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="index.html">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="work.html">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="news.html">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="profile.html">Profile</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="contact.html">Contact</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-[#1A1A1A] font-bold" href="media.html">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                &copy; 2026 Grega Vezjak Architecture. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="asset/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const toggleMenu = (isOpen) => {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', () => toggleMenu(true));
+            mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+
+            // Close menu on link click
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => toggleMenu(false));
+            });
+
+            // Reveal animations on scroll
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

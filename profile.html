@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Profile — Grega Vezjak Architecture</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "on-tertiary-container": "#4c4a46",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary": "#605e5a",
+                        "outline": "#7c766c",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f0ec",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484742",
+                        "surface-container-highest": "#e4e2de",
+                        "on-secondary-container": "#626363",
+                        "tertiary-fixed": "#e6e2dc",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#695d43",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "tertiary-container": "#bdbab4",
+                        "outline-variant": "#cdc5b9",
+                        "surface-variant": "#e4e2de",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-surface": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-low": "#f5f3ef",
+                        "surface": "#fbf9f5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#544931",
+                        "on-primary-fixed-variant": "#50462e",
+                        "surface-bright": "#fbf9f5",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "tertiary-fixed-dim": "#cac6c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-background": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "secondary-container": "#e0dfdf",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#d4c5a5",
+                        "surface-tint": "#695d43",
+                        "primary-fixed": "#f1e1c0",
+                        "on-primary-fixed": "#221b06",
+                        "primary-fixed-dim": "#d4c5a5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "newsreader": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-container-low text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl transition-transform duration-500">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-4">
+            <a class="font-['Newsreader'] text-2xl font-normal text-[#1A1A1A] tracking-tighter" href="index.html">GVA</a>
+            <div class="hidden md:flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="work.html">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="news.html">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#C8B99A] border-b border-[#C8B99A] pb-1 transition-colors duration-300" href="profile.html">Profile</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="media.html">Media</a>
+            </div>
+            <button id="mobile-menu-open" class="md:hidden text-[#1A1A1A]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#F5F3EF]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="index.html">Home</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="work.html">Work</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="news.html">News</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="profile.html">Profile</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="media.html">Media</a>
+    </div>
+
+    <main class="pt-32 pb-20 px-8 md:px-20 max-w-[1920px] mx-auto">
+        <!-- Profile Content -->
+        <section class="flex flex-col md:flex-row gap-16 md:gap-32 items-start mb-40 reveal">
+            <!-- Left: Portrait (Small Size) -->
+            <div class="w-full md:w-1/3 lg:w-1/4">
+                <div class="aspect-[253/300] overflow-hidden bg-surface-container">
+                    <img alt="Portrait of Grega Vezjak" class="w-full h-full object-cover" src="asset/images/photo-Grega-Vezjak-2-253x300.jpg"/>
+                </div>
+            </div>
+            <!-- Right: Bio & Content -->
+            <div class="w-full md:w-2/3 lg:w-3/4 pt-0">
+                <span class="font-label text-[12px] uppercase tracking-[0.2em] text-[#999999] mb-8 block">Profile</span>
+                <h1 class="font-headline text-[42px] leading-[1.2] text-[#1A1A1A] mb-12 max-w-2xl">
+                    Architect Grega Vezjak is a member of the Slovenian Chamber of Architecture and Spatial Planning.
+                </h1>
+                
+                <div class="font-body text-[16px] leading-[1.8] text-[#5E5E5E] space-y-12 max-w-2xl">
+                    <div class="space-y-6">
+                        <p>
+                            His architectural focus centers on crafting custom residential, commercial, public, and memorial spaces.
+                        </p>
+                        <p>
+                            His portfolio highlights include the renowned Canterbury Earthquake National Memorial – Oi Manawa, a national monument of New Zealand and the Tri Ân Monument in Jeffersontown, Kentucky.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h2 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Biography</h2>
+                        <p>
+                            Grega Vezjak was born in 1981 and grew up in Bilje, Slovenia. After graduation in 2007 at Faculty of Architecture, University of Ljubljana, he worked in architectural firms, collaborating on a variety of projects from large commercial high rise building to smaller residential and community projects in both public and private sector. In 2013 he became a member of the Slovenian Chamber of Architecture and Spatial Planning (ZAPS) and began working as a sole practitioner.
+                        </p>
+                        <p>
+                            Awards and achievements include producing the winning design for a coat of arms of Orehovlje competition and coming second in a partnership design in a national architectural competition for designing Student housing in Nova Gorica.
+                        </p>
+                        <p>
+                            In May 2015, Grega’s design won the international competition for the Canterbury Earthquake Memorial to be built in Christchurch, New Zealand. His design was selected from more than 330 international entries. In less than two years of ongoing work, in February 2017 the Canterbury Earthquake National Memorial – Oi Manawa was officially opened.
+                        </p>
+                        <p>
+                            In January 2017 his design was selected from 128 entries in an international competition to build Tri-An Monument in Louisville, KY, United States. The Monument was completed and dedicated in October 2023.
+                        </p>
+                        <p>
+                            In April 2018 his design for the Pan-European Memorial for the Victims of Totalitarianism in Brussels was shortlisted in the top 10 entries in the international competition.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 reveal border-t border-outline-variant pt-24">
+            <div class="flex flex-col gap-8">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.15em] text-[#1A1A1A]">Studio</h3>
+                <address class="not-italic text-[18px] leading-loose text-[#605e5a] font-body font-light">
+                    Bilje 30 A<br/>
+                    5292 Rence<br/>
+                    Slovenia
+                </address>
+                <div class="pt-2">
+                    <p class="text-[18px] text-[#605e5a] font-light">00386 51 389 933</p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-8">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.15em] text-[#1A1A1A]">Inquiries</h3>
+                <div class="flex flex-col gap-6">
+                    <a class="font-headline text-[24px] md:text-[32px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-500" href="mailto:arhitekt@gregavezjak.com">
+                        arhitekt@gregavezjak.com
+                    </a>
+                    <ul class="flex flex-col gap-4 text-[16px] font-body font-light uppercase tracking-widest mt-4">
+                        <li><a class="text-[#605e5a] hover:text-[#C8B99A] transition-colors duration-300" href="https://www.facebook.com/gregavezjakarhitekt" target="_blank">FACEBOOK</a></li>
+                        <li><a class="text-[#605e5a] hover:text-[#C8B99A] transition-colors duration-300" href="https://x.com/GregaVezjak" target="_blank">X (TWITTER)</a></li>
+                        <li><a class="text-[#605e5a] hover:text-[#C8B99A] transition-colors duration-300" href="https://www.instagram.com/gregavezjak/" target="_blank">INSTAGRAM</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-[#F5F3EF] px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br/>
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com" class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br/>
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="index.html">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="work.html">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="news.html">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-[#1A1A1A] font-bold" href="profile.html">Profile</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="contact.html">Contact</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="media.html">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                &copy; 2026 Grega Vezjak Architecture. All Rights Reserved.
+            </p>
+        </div>
+        <div class="flex justify-center mt-12">
+            <a href="https://buraqwebservice.com/" target="_blank"
+                class="font-['Inter'] text-[9px] uppercase tracking-[0.3em] text-[#EBE9E5] hover:text-secondary transition-colors duration-500">
+                Design By Buraq Web Service
+            </a>
+        </div>
+    </footer>
+
+    <script src="asset/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const toggleMenu = (isOpen) => {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', () => toggleMenu(true));
+            mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+
+            // Close menu on link click
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => toggleMenu(false));
+            });
+        });
+    </script>
+</body>
+</html>

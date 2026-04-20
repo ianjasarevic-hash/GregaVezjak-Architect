@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Work — Grega Vezjak Architecture</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "on-tertiary-container": "#4c4a46",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary": "#605e5a",
+                        "outline": "#7c766c",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f0ec",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484742",
+                        "surface-container-highest": "#e4e2de",
+                        "on-secondary-container": "#626363",
+                        "tertiary-fixed": "#e6e2dc",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#695d43",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "tertiary-container": "#bdbab4",
+                        "outline-variant": "#cdc5b9",
+                        "surface-variant": "#e4e2de",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-surface": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-low": "#f5f3ef",
+                        "surface": "#fbf9f5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#544931",
+                        "on-primary-fixed-variant": "#50462e",
+                        "surface-bright": "#fbf9f5",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "tertiary-fixed-dim": "#cac6c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-background": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "secondary-container": "#e0dfdf",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#d4c5a5",
+                        "surface-tint": "#695d43",
+                        "primary-fixed": "#f1e1c0",
+                        "on-primary-fixed": "#221b06",
+                        "primary-fixed-dim": "#d4c5a5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .project-image-hover:hover img {
+            filter: brightness(0.7);
+        }
+        .image-overlay {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .project-image-hover:hover .image-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-low text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl transition-transform duration-500">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-4">
+            <a class="font-['Newsreader'] text-2xl font-normal text-[#1A1A1A] tracking-tighter" href="index.html">GVA</a>
+            <div class="hidden md:flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#C8B99A] border-b border-[#C8B99A] pb-1 transition-colors duration-300" href="work.html">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="news.html">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="profile.html">Profile</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="media.html">Media</a>
+            </div>
+            <button id="mobile-menu-open" class="md:hidden text-[#1A1A1A]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#F5F3EF]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="index.html">Home</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="work.html">Work</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="news.html">News</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="profile.html">Profile</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="media.html">Media</a>
+    </div>
+
+    <main class="pt-40 md:pt-56 pb-20 px-6 md:px-20">
+        <!-- Page Header -->
+        <header class="max-w-4xl mb-24 md:mb-40 reveal">
+            <h1 class="font-headline text-5xl md:text-8xl font-light mb-8 text-on-surface">Work</h1>
+            <p class="font-headline text-xl md:text-3xl italic text-on-surface-variant leading-relaxed">
+                A collection of spaces defined by light, materiality, and the passage of time.
+            </p>
+        </header>
+
+        <!-- Project List -->
+        <div class="space-y-32 md:space-y-64">
+
+            <!-- Project 1: ST NICHOLAS BELL TOWER -->
+            <section class="group reveal">
+                <a href="work/st-nicholas-bell-tower.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="ST NICHOLAS BELL TOWER" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/st-nicholas-bell-tower-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">ST NICHOLAS BELL TOWER</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2026</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        New bell tower for the (post)modernist church in Ankaran, Slovenia, that was originally designed without one. The bel...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 2: BUDIN HOUSE -->
+            <section class="group reveal">
+                <a href="work/budin-house.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="BUDIN HOUSE" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/budin-house-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">BUDIN HOUSE</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2023</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        Budin house
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 3: MEMORIAL TO THE VICTIMS OF THE 1871 CHINESE MASSACRE -->
+            <section class="group reveal">
+                <a href="work/memorial-to-the-victims-of-the-1871-chinese-massacre.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="MEMORIAL TO THE VICTIMS OF THE 1871 CHINESE MASSACRE" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/memorial-to-the-victims-of-the-1871-chinese-massacre-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">MEMORIAL TO THE VICTIMS OF THE 1871 CHINESE MASSACRE</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2022</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        Los Angeles, California
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 4: USTJE HOUSE -->
+            <section class="group reveal">
+                <a href="work/ustje-house.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="USTJE HOUSE" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/ustje-house-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">USTJE HOUSE</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2022</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        Project for a family house in Ustje, Mediterranean village in Slovenia.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 5: HOUSE 41 -->
+            <section class="group reveal">
+                <a href="work/house-41.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="HOUSE 41" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/house-41-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">HOUSE 41</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2020</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        House 41 is a project for a family house that builds with an existing old house on the small, narrow plot in the cult...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 6: URBAN CONFLUENCE SILICON VALLEY -->
+            <section class="group reveal">
+                <a href="work/urban-confluence-silicon-valley.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="URBAN CONFLUENCE SILICON VALLEY" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/urban-confluence-silicon-valley-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">URBAN CONFLUENCE SILICON VALLEY</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2020</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        San Jose, California
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 7: TWO-FAMILY HOUSE IN PREDOSLJE -->
+            <section class="group reveal">
+                <a href="work/two-family-house-in-predoslje.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="TWO-FAMILY HOUSE IN PREDOSLJE" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/two-family-house-in-predoslje-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">TWO-FAMILY HOUSE IN PREDOSLJE</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2019</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        Project is a result of the Society of Saint Vincent de Paul’s charity campaign to build small social housing for two ...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 8: PAN-EUROPEAN MEMORIAL FOR THE VICTIMS OF TOTALITARIANISM -->
+            <section class="group reveal">
+                <a href="work/pan-european-memorial-victims-totalitarianism.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="PAN-EUROPEAN MEMORIAL FOR THE VICTIMS OF TOTALITARIANISM" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/pan-european-memorial-victims-totalitarianism-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">PAN-EUROPEAN MEMORIAL FOR THE VICTIMS OF TOTALITARIANISM</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2018</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Belgium</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        In 2009, the European Parliament called for the creation of a pan-European memorial for the victims of all totalitari...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 9: OI MANAWA - CANTERBURY EARTHQUAKE NATIONAL MEMORIAL -->
+            <section class="group reveal">
+                <a href="work/oi-manawa.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="OI MANAWA - CANTERBURY EARTHQUAKE NATIONAL MEMORIAL" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/oi-manawa-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">OI MANAWA - CANTERBURY EARTHQUAKE NATIONAL MEMORIAL</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2017</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>New Zealand</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        competition, selected design
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 10: TISINA HOUSE -->
+            <section class="group reveal">
+                <a href="work/tisina-house.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="TISINA HOUSE" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/tisina-house-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">TISINA HOUSE</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2017</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        Tisina House is a house for a contemporary family living on a countryside in Prekmurje region. Shape of the house wit...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 11: CANTERBURY EARTHQUAKE NATIONAL MEMORIAL - NORTH BANK -->
+            <section class="group reveal">
+                <a href="work/canterbury-earthquake-national-memorial-north-bank.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="CANTERBURY EARTHQUAKE NATIONAL MEMORIAL - NORTH BANK" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/canterbury-earthquake-national-memorial-north-bank-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">CANTERBURY EARTHQUAKE NATIONAL MEMORIAL - NORTH BANK</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2016</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>New Zealand</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        with GHD, LandLAB
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 12: KAVCIC HOUSE -->
+            <section class="group reveal">
+                <a href="work/kavcic-house.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="KAVCIC HOUSE" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/kavcic-house-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">KAVCIC HOUSE</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2016</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        Family home lays on a vineyard terraces with beautiful views on the hilly landscape. Client wants quiet house with a ...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 13: TRI ÂN -->
+            <section class="group reveal">
+                <a href="work/tri-an.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="TRI ÂN" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/tri-an-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">TRI ÂN</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2016</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        Jeffersontown, KY, United States
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 14: TRI ÂN MONUMENT -->
+            <section class="group reveal">
+                <a href="work/tri-an-monument.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="TRI ÂN MONUMENT" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/tri-an-monument-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">TRI ÂN MONUMENT</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2016</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Kentucky</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        In Louisville, Kentucky, a diverse group of citizens led by Yung Nguyen, an immigrant from Vietnam, has conceived ide...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 15: CANTERBURY EARTHQUAKE MEMORIAL -->
+            <section class="group reveal">
+                <a href="work/canterbury-earthquake-memorial.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="CANTERBURY EARTHQUAKE MEMORIAL" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/canterbury-earthquake-memorial-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">CANTERBURY EARTHQUAKE MEMORIAL</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2015</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>New Zealand</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        Canterbury Earthquake Memorial
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 16: OREHOVLJE PARK -->
+            <section class="group reveal">
+                <a href="work/orehovlje-village-park.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="OREHOVLJE PARK" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/orehovlje-village-park-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">OREHOVLJE PARK</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2015</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        Proposal for creating village center in Orehovlje. Local community expressed their wish for a green park. The idea wa...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 17: KOPISCE MEMORIAL -->
+            <section class="group reveal">
+                <a href="work/kopisce-memorial.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="KOPISCE MEMORIAL" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/kopisce-memorial-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">KOPISCE MEMORIAL</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2014</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        There are more than 600 mass graves of victims of communist revolution in Slovenia. This is proposal for the Memorial...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 18: ANTONINA HOUSE -->
+            <section class="group reveal">
+                <a href="work/antonina-house.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="ANTONINA HOUSE" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/antonina-house-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">ANTONINA HOUSE</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2013</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        First phase of the design for private house with a Montessori kindergarten on a small site, surrounded by fields.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 19: LITTLE GARDEN HOUSE -->
+            <section class="group reveal">
+                <a href="work/little-garden-house.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="LITTLE GARDEN HOUSE" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/little-garden-house-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">LITTLE GARDEN HOUSE</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2011</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        The need of little children to have their own house materialized in a wooden garden house. Every piece of two story h...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 20: LOCAL COMMUNITY CEZSOCA -->
+            <section class="group reveal">
+                <a href="work/local-comunity-cezsoca.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="LOCAL COMMUNITY CEZSOCA" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/local-comunity-cezsoca-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">LOCAL COMMUNITY CEZSOCA</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2011</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        with Teja Savelli, Tine Kljun, Mateja Obid
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 21: HOUSE IN BILJE -->
+            <section class="group reveal">
+                <a href="work/house-bilje.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="HOUSE IN BILJE" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/house-bilje-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">HOUSE IN BILJE</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2008</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        Refurbishment of a large family house into two individual apartments, each two-story with it’s own entrance and own g...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 22: STUDENT HOUSING NOVA GORICA -->
+            <section class="group reveal">
+                <a href="work/student-housing-nova-gorica.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="STUDENT HOUSING NOVA GORICA" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/student-housing-nova-gorica-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">STUDENT HOUSING NOVA GORICA</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2008</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        with Domen Mozetic
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 23: VILLA BARTOLOMEI -->
+            <section class="group reveal">
+                <a href="work/villa-bartolomei.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="VILLA BARTOLOMEI" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/villa-bartolomei-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">VILLA BARTOLOMEI</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2007</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        mentor Vojteh Ravnikar
+                    </p>
+                </div>
+            </section>
+
+            <!-- Project 24: RETIREMENT HOME IDRIJA -->
+            <section class="group reveal">
+                <a href="work/retirement-home-idrija.html" class="block">
+                    <div class="relative aspect-video overflow-hidden project-image-hover bg-surface-container scale-hover">
+                        <img alt="RETIREMENT HOME IDRIJA" class="w-full h-full object-cover transition-all duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" src="asset/image/work/retirement-home-idrija-hero.jpg"/>
+                        <div class="image-overlay absolute inset-0 flex items-center justify-center bg-black/10">
+                            <span class="font-label text-white text-[12px] tracking-[0.2em] uppercase border-b border-white pb-1">View Project</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="mt-8 flex flex-col md:flex-row md:justify-between items-start">
+                    <div>
+                        <h2 class="font-headline text-3xl md:text-5xl font-light text-on-surface">RETIREMENT HOME IDRIJA</h2>
+                        <div class="flex items-center gap-4 mt-3 font-label text-[11px] tracking-[0.15em] uppercase text-on-surface-variant">
+                            <span>2006</span>
+                            <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                            <span>Slovenia</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 md:mt-0 max-w-sm font-headline text-lg italic text-on-surface-variant leading-relaxed text-right md:text-left">
+                        with Grega Klemencic
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-[#F5F3EF] px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br/>
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com" class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br/>
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="index.html">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-[#1A1A1A] font-bold" href="work.html">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="news.html">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="profile.html">Profile</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="contact.html">Contact</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="media.html">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                &copy; 2026 Grega Vezjak Architecture. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="asset/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const toggleMenu = (isOpen) => {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', () => toggleMenu(true));
+            mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+        });
+    </script>
+</body>
+</html>

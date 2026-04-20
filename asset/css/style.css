@@ -1,0 +1,103 @@
+/* Global Styles based on The Silent Monograph Design System */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@200;300;400;600&family=Newsreader:opsz,wght@6-72,200;300;400&display=swap');
+
+:root {
+    --bg-color: #f5f3ef;
+    --text-color: #1a1a1a;
+    --accent-color: #c8b99a;
+    --meta-color: #999999;
+    --divider-color: #dedad4;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Material Symbols configuration */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* No rounded corners as per Design System */
+* {
+    border-radius: 0 !important;
+}
+
+/* Custom Utilities */
+.font-headline {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.font-body {
+    font-family: 'Inter', sans-serif;
+}
+
+.font-mono {
+    font-family: 'Newsreader', serif;
+}
+
+.scale-hover img {
+    transition: transform 0.5s ease-in-out;
+}
+
+.scale-hover:hover img {
+    transform: scale(1.02);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Custom Cursor */
+@media (pointer: fine) {
+    .custom-cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        border: 1px solid var(--accent-color);
+        border-radius: 50% !important;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(calc(var(--cursor-x) - 15px), calc(var(--cursor-y) - 15px));
+        transition: opacity 0.3s ease, border-width 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity: 0;
+    }
+
+    .cursor-active .custom-cursor {
+        opacity: 1;
+    }
+
+    .cursor-hover .custom-cursor {
+        width: 40px;
+        height: 40px;
+        transform: translate(calc(var(--cursor-x) - 20px), calc(var(--cursor-y) - 20px));
+        border-width: 2px;
+        border-color: var(--accent-color);
+        background-color: rgba(200, 185, 154, 0.05);
+    }
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Construction of the Tri Ã‚n Monument â€” Grega Vezjak Architecture</title>
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "outline-variant": "#cdc5b9",
+                        "surface": "#fbf9f5",
+                        "on-surface": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "background": "#fbf9f5",
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "newsreader": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#F5F3EF] text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl transition-transform duration-500">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-4">
+            <a class="font-['Newsreader'] text-2xl font-normal text-[#1A1A1A] tracking-tighter" href="../index.html">GVA</a>
+            <div class="hidden md:flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../work.html">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#C8B99A] border-b border-[#C8B99A] pb-1 transition-colors duration-300" href="../news.html">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../profile.html">Profile</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../contact.html">Contact</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../media.html">Media</a>
+            </div>
+            <button id="mobile-menu-open" class="md:hidden text-[#1A1A1A]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#F5F3EF]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A]" href="../index.html">Home</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A]" href="../work.html">Work</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A]" href="../news.html">News</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A]" href="../profile.html">Profile</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../contact.html">Contact</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A]" href="../media.html">Media</a>
+    </div>
+
+    <main class="pt-40 pb-24 px-8 md:px-20 max-w-[1400px] mx-auto">
+        <article class="reveal">
+            <!-- Header -->
+            <header class="max-w-4xl mb-20">
+                <div class="flex items-center gap-4 text-on-surface-variant uppercase tracking-[0.2em] text-[11px] mb-6">
+                    <span>April 25, 2023</span>
+                    <span class="w-8 h-[1px] bg-outline-variant"></span>
+                    <span>Journal / Construction</span>
+                </div>
+                <h1 class="font-headline text-[48px] md:text-[72px] font-light leading-[1.1] tracking-tight mb-8">Construction of the Tri Ã‚n Monument</h1>
+                <p class="font-body text-lg text-secondary leading-relaxed max-w-2xl">Construction of the Tri Ã‚n Monument is underway in Jeffersontown, Kentucky. The Monument will be located in the Jeffersontownâ€™s Veteranâ€™s Memorial Park.</p>
+            </header>
+
+            <!-- Main Image -->
+            <div class="mb-24 aspect-[21/9] overflow-hidden bg-surface-container">
+                <img src="../asset/images/news/IMG_6278.jpeg" alt="Tri Ã‚n Monument Construction" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24">
+                <div class="md:col-span-7 font-body text-[17px] leading-relaxed text-on-surface-variant space-y-8">
+                    <p>A diverse group of citizens led by Yung Nguyen, an immigrant from Vietnam, has conceived idea of a monument of thanksgiving; a place of special recognition for the tremendous sacrifices the American and South Vietnamese Armed Forces made during the Vietnam War in order to give the Vietnamese people a chance to live in freedom. Tri-An means â€œdeep gratitudeâ€ in the Vietnamese language.</p>
+                    <p>Grega Vezjakâ€™s design was selected in January 2017 in an international competition featuring more than 120 project. The pandemic restrictions and supply chain issues delayed shipments of the 270 tons of granite needed for the memorial, but after the groundbreaking ceremony in December 2022 works are progressing steadily.</p>
+                    <p>The Monument is situated on a sloping hillside site within a park with other monuments to veterans nearby. Large granite slabs are being placed on concrete foundations. Together there will be 36 solid blocks from South Vietnam granite carefully placed to form an open memorial courtyard.</p>
+                    <p>Construction is going well, works are scheduled to be completed this year, with the dedication ceremony planned in October. The project continues to attract attention for its meaningful, unique, and timeless approach to commemorating those who served.</p>
+                </div>
+                <div class="md:col-span-5 space-y-12">
+                    <img src="../asset/images/news/IMG_4826-scaled-e1692347565794.jpg" alt="Construction Site" class="w-full shadow-sm">
+                    <img src="../asset/images/news/IMG_6273.jpeg" alt="Granite Detail" class="w-full shadow-sm">
+                    <img src="../asset/images/news/IMG_6288.jpeg" alt="Progress View" class="w-full shadow-sm">
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <footer class="border-t border-outline-variant pt-12 mt-24">
+                <a href="../news.html" class="inline-flex items-center gap-4 group">
+                    <div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:bg-on-surface group-hover:text-surface transition-all duration-300">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M19 12H5M5 12L12 19M5 12L12 5"/>
+                        </svg>
+                    </div>
+                    <span class="font-label text-sm uppercase tracking-widest">Back to Journal</span>
+                </a>
+            </footer>
+        </article>
+    </main>
+
+        <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-[#F5F3EF] px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br/>
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com" class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br/>
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../index.html">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../work.html">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../news.html">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../profile.html">Profile</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../contact.html">Contact</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../media.html">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                © 2026 Grega Vezjak Architecture. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../asset/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const toggleMenu = (isOpen) => {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', () => toggleMenu(true));
+            mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+        });
+    </script>
+</body>
+</html>

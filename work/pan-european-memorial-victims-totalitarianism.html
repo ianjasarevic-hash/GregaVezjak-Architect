@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>PAN-EUROPEAN MEMORIAL FOR THE VICTIMS OF TOTALITARIANISM â€” Grega Vezjak Architecture</title>
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "on-tertiary-container": "#4c4a46",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary": "#605e5a",
+                        "outline": "#7c766c",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f0ec",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484742",
+                        "surface-container-highest": "#e4e2de",
+                        "on-secondary-container": "#626363",
+                        "tertiary-fixed": "#e6e2dc",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#695d43",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "tertiary-container": "#bdbab4",
+                        "outline-variant": "#cdc5b9",
+                        "surface-variant": "#e4e2de",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-surface": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-low": "#f5f3ef",
+                        "surface": "#fbf9f5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#544931",
+                        "on-primary-fixed-variant": "#50462e",
+                        "surface-bright": "#fbf9f5",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "tertiary-fixed-dim": "#cac6c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-background": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "secondary-container": "#e0dfdf",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#d4c5a5",
+                        "surface-tint": "#695d43",
+                        "primary-fixed": "#f1e1c0",
+                        "on-primary-fixed": "#221b06",
+                        "primary-fixed-dim": "#d4c5a5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-4">
+            <a class="font-['Newsreader'] text-2xl font-normal text-[#1A1A1A] tracking-tighter" href="../index.html">GVA</a>
+            <div class="hidden md:flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#C8B99A] border-b border-[#C8B99A] pb-1 transition-colors duration-300" href="../work.html">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../news.html">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../profile.html">Profile</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../contact.html">Contact</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../media.html">Media</a>
+            </div>
+            <button id="mobile-menu-open" class="md:hidden text-[#1A1A1A]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#F5F3EF]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../index.html">Home</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../work.html">Work</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../news.html">News</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../profile.html">Profile</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../contact.html">Contact</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../media.html">Media</a>
+    </div>
+
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section class="w-full h-[70vh] md:h-[90vh] overflow-hidden relative reveal">
+            <img src="../asset/image/work/pan-european-memorial-victims-totalitarianism-hero.jpg" alt="TRI Ã‚N" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/10"></div>
+        </section>
+
+        <!-- Project Header -->
+        <section class="max-w-[1920px] mx-auto px-6 md:px-20 py-20 md:py-32">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+                <div class="md:col-span-4 reveal">
+                    <h1 class="font-headline text-4xl md:text-6xl font-light leading-tight mb-8">PAN-EUROPEAN MEMORIAL FOR THE VICTIMS OF TOTALITARIANISM</h1>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1">Location</p>
+                            <p class="font-body text-sm text-on-surface">Brussels, Belgium</p>
+                        </div>
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1">Year</p>
+                            <p class="font-body text-sm text-on-surface">2018</p>
+                        </div>
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1">Status</p>
+                            <p class="font-body text-sm text-on-surface">shortlisted competition entry</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 md:col-start-6 reveal">
+                    <div class="font-headline text-xl md:text-2xl leading-relaxed text-on-surface-variant space-y-8 italic">
+<p>In 2009, the European Parliament called for the creation of a pan-European memorial for the victims of all totalitarian regimes. The goal of the project is to propose the first-ever pan-European memorial for all victims of 20th century totalitarianism in Europe on the Place Jean Rey, in the heart of the European district in Brussels.</p>
+<p>The Platform of European Memory and Conscience launched an international competition for the creation of a new memorial dedicated to the victims of National Socialism, Fascism and Communism in Brussels. Its purpose is to commemorate the millions of human lives lost to 20th century totalitarianism in Europe and to celebrate the European Union as a unique peace and democracy project built upon the lessons of the past.</p>
+<p>Proposed memorial is situated on given location in the Jean Rey square in Brussels, Belgium. It consist of the existing square arrangements and a memorial addition, the column placed in the center of the square. In that way it provides economical and very effective solution. Existing square surfaces and greenery are left basically intact, only with possible small renovations and alternations where needed. Proposed memorial in the center of the square is 20 m tall steel structure with polished black granite cladding. Stone cladding is in plan concaved shaped on all four sides. Selected words can be applied on the stone in the eye-sight. From the top the water is evenly let down on the concave surfaces. Base of the column fits in the 3,2 m x 3,2 m square. New flamed black granite paving with width of 1,6 m from the column to the existing square pavement pattern is proposed. Between the new paving and concave stone is safety glass surface with wide joint to allow water in. Under the glass the ground up-lights can be fitted to illuminate the column. Memorial is conceived in a way that minimum time on site is required and most of the works can be done simultaneously off site and assembled on site to meet small timeframe. With simple form, repetitive stone and structure patterns and tried techniques it allows minimum time required with almost no mistakes possible. Memorial is easy reachable and safe also for elderly, wheelchair users, blind and visual impaired. Existing square remains usable for protocol, ceremonies and for other possible events if needed.</p>
+<p>From a distance I see mysterious vertical shape that draws me close. Tree lines are interrupted by the round fountain; opportunity to wash and turn towards the memorial. I enter the square, filled with water jets sounds and surrounded with trees that provide peacefulness and protection for the people on the benches underneath. They are facing the center where a tall column from black granite like exclamation mark warningly and courageously stands. It has sober character, there is a sense of grave suffering, death. But its surfaces have deep concave form. It looks like strong forces were pushing in from all sides and this has shaped and pushed the mass higher and higher. That is why, despite the strong presence the memorial looks passive, not aggressive. Now I see where the bursting water comes from. It runs down from the very top where the polished stone reflects the free sky and warm sun. The water runs quiet, but tireless. It will run forever. There is a lot of life in the column after all. The countless tears are running down, vanishing into the earth. But then they burst out in many places all around. I believe there is a whole lake across the road. The concave column embraces me closer as friendly arms needs comfort. As I walk near, image of me, reflected on the countless different grains of the stone, turns around, mirrors due to the concave shape. Only then I can touch the water, better: it touches me.</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Gallery -->
+        <section class="max-w-[1920px] mx-auto px-6 md:px-20 pb-32">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+
+                <div class="reveal">
+                    <img src="../asset/image/work/pan-european-memorial-victims-totalitarianism-1.jpg" alt="PAN-EUROPEAN MEMORIAL FOR THE VICTIMS OF TOTALITARIANISM Detail 1" class="w-full aspect-[4/5] object-cover">
+                </div>
+                <div class="reveal md:pt-40">
+                    <img src="../asset/image/work/pan-european-memorial-victims-totalitarianism-2.jpg" alt="PAN-EUROPEAN MEMORIAL FOR THE VICTIMS OF TOTALITARIANISM Detail 2" class="w-full aspect-[4/5] object-cover">
+                </div>
+                <div class="reveal">
+                    <img src="../asset/image/work/pan-european-memorial-victims-totalitarianism-3.jpg" alt="PAN-EUROPEAN MEMORIAL FOR THE VICTIMS OF TOTALITARIANISM Detail 3" class="w-full aspect-[4/5] object-cover">
+                </div>
+                <div class="reveal md:pt-40">
+                    <img src="../asset/image/work/pan-european-memorial-victims-totalitarianism-4.jpg" alt="PAN-EUROPEAN MEMORIAL FOR THE VICTIMS OF TOTALITARIANISM Detail 4" class="w-full aspect-[4/5] object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Back Link -->
+        <section class="max-w-[1920px] mx-auto px-6 md:px-20 py-20 border-t border-outline-variant flex justify-center reveal">
+            <a href="../work.html" class="font-label text-[12px] uppercase tracking-[0.3em] text-on-surface hover:text-primary transition-colors duration-500">
+                Back to Projects
+            </a>
+        </section>
+    </main>
+
+        <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-[#F5F3EF] px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br/>
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com" class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br/>
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../index.html">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../work.html">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../news.html">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../profile.html">Profile</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../contact.html">Contact</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../media.html">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                © 2026 Grega Vezjak Architecture. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../asset/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const toggleMenu = (isOpen) => {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', () => toggleMenu(true));
+            mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+        });
+    </script>
+</body>
+</html>

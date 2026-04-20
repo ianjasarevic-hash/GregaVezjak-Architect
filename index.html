@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Grega Vezjak — Architecture of Silence</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "on-tertiary-container": "#4c4a46",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary": "#605e5a",
+                        "outline": "#7c766c",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f0ec",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484742",
+                        "surface-container-highest": "#e4e2de",
+                        "on-secondary-container": "#626363",
+                        "tertiary-fixed": "#e6e2dc",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#695d43",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "tertiary-container": "#bdbab4",
+                        "outline-variant": "#cdc5b9",
+                        "surface-variant": "#e4e2de",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-surface": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-low": "#f5f3ef",
+                        "surface": "#fbf9f5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#544931",
+                        "on-primary-fixed-variant": "#50462e",
+                        "surface-bright": "#fbf9f5",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "tertiary-fixed-dim": "#cac6c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-background": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "secondary-container": "#e0dfdf",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#d4c5a5",
+                        "surface-tint": "#695d43",
+                        "primary-fixed": "#f1e1c0",
+                        "on-primary-fixed": "#221b06",
+                        "primary-fixed-dim": "#d4c5a5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-slider-item {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-slider-item.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-surface-container-low text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl transition-transform duration-500">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-4">
+            <a class="font-['Newsreader'] text-2xl font-normal text-[#1A1A1A] tracking-tighter"
+                href="index.html">GVA</a>
+            <div class="hidden md:flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300"
+                    href="work.html">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300"
+                    href="news.html">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300"
+                    href="profile.html">Profile</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300"
+                    href="media.html">Media</a>
+            </div>
+            <button id="mobile-menu-open" class="md:hidden text-[#1A1A1A]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[100] bg-[#F5F3EF]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors"
+            href="index.html">Home</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors"
+            href="work.html">Work</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors"
+            href="news.html">News</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors"
+            href="profile.html">Profile</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors"
+            href="media.html">Media</a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative w-full h-screen overflow-hidden">
+        <div class="hero-slider-item active">
+            <img alt="Urban Confluence" class="w-full h-full object-cover"
+                src="asset/image/work/urban-confluence-hero.jpg" />
+        </div>
+        <div class="hero-slider-item">
+            <img alt="Oi Manawa Memorial" class="w-full h-full object-cover"
+                src="asset/image/work/oi-manawa-hero.jpg" />
+        </div>
+        <div class="hero-slider-item">
+            <img alt="Pan-European Memorial" class="w-full h-full object-cover"
+                src="asset/image/work/pan-european-memorial-hero.jpg" />
+        </div>
+        <!-- Hero Content -->
+        <div class="absolute bottom-16 left-6 md:bottom-24 md:left-20 z-20">
+            <h1 class="font-headline text-6xl md:text-[72px] leading-tight text-[#1A1A1A]">Grega Vezjak</h1>
+            <p class="font-body text-sm md:text-base uppercase tracking-[0.2em] text-[#1A1A1A] mt-4 font-light">
+                Architecture of Silence and Permanence</p>
+        </div>
+        <!-- Gradient Overlay -->
+        <div
+            class="absolute inset-0 bg-gradient-to-t from-[#F5F3EF]/40 via-transparent to-transparent pointer-events-none">
+        </div>
+    </header>
+
+    <main class="w-full px-6 md:px-20 py-32 space-y-48">
+        <!-- Selected Work Header -->
+        <section class="max-w-7xl reveal">
+            <h2 class="font-headline text-4xl md:text-[42px] text-[#1A1A1A]">Selected Work</h2>
+        </section>
+
+        <!-- Project Block 1: Oi Manawa Memorial -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-start reveal">
+            <div class="md:col-span-8 overflow-hidden scale-hover group">
+                <a href="work/oi-manawa.html">
+                    <img alt="Oi Manawa Memorial" class="w-full h-[716px] object-cover"
+                        src="asset/image/work/oi-manawa-hero.jpg" />
+                </a>
+            </div>
+            <div class="md:col-span-4 flex flex-col justify-end h-full">
+                <div class="mb-12 overflow-hidden scale-hover">
+                    <img alt="Oi Manawa Detail" class="w-full h-[409px] object-cover"
+                        src="asset/image/work/oi-manawa-1.jpg" />
+                </div>
+                <div>
+                    <h3 class="font-headline text-3xl mb-4">Oi Manawa Memorial</h3>
+                    <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-6">Memorial •
+                        Christchurch, NZ • 2017</p>
+                    <p class="font-body text-[#1A1A1A] leading-relaxed max-w-sm mb-8 opacity-80">
+                        A place of past and future, providing a connection to the water symbolic of life and its
+                        infinite nature.
+                    </p>
+                    <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                        href="work/oi-manawa-memorial.html">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Block 2: Tri Ân Monument -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal">
+            <div class="md:col-span-5 md:order-2">
+                <div class="overflow-hidden scale-hover">
+                    <a href="work/tri-an-monument.html">
+                        <img alt="Tri Ân Monument" class="w-full h-[819px] object-cover"
+                            src="asset/image/work/tri-an-hero.jpg" />
+                    </a>
+                </div>
+            </div>
+            <div class="md:col-span-6 md:col-start-1 md:order-1 text-right md:pr-20">
+                <h3 class="font-headline text-3xl mb-4">Tri Ân Monument</h3>
+                <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-6">Memorial • Kentucky, USA
+                    • 2023</p>
+                <p class="font-body text-[#1A1A1A] leading-relaxed max-w-md ml-auto mb-8 opacity-80">
+                    A tribute honoring those who fought for freedom, represented by eight bamboo-formed concrete columns
+                    standing majestically at the edge of the forest.
+                </p>
+                <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                    href="work/tri-an-monument.html">View Project</a>
+            </div>
+        </section>
+
+        <!-- Project Block 3: Urban Confluence Silicon Valley -->
+        <section class="w-full relative py-20 reveal">
+            <div class="overflow-hidden scale-hover w-full h-[921px]">
+                <a href="work/urban-confluence-silicon-valley.html">
+                    <img alt="Urban Confluence Silicon Valley" class="w-full h-full object-cover"
+                        src="asset/image/work/urban-confluence-hero.jpg" />
+                </a>
+            </div>
+            <div class="mt-12 max-w-2xl">
+                <h3 class="font-headline text-3xl mb-4">Urban Confluence</h3>
+                <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-4">Competition • San Jose,
+                    USA • 2020</p>
+                <p class="font-body text-[#1A1A1A] leading-relaxed opacity-80 mb-8">
+                    An iconic landmark proposal reflecting the innovative spirit of Silicon Valley.
+                </p>
+                <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                    href="work/urban-confluence-silicon-valley.html">View Project</a>
+            </div>
+        </section>
+
+        <!-- Project Block 4: St Nicholas Bell Tower -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-start reveal">
+            <div class="md:col-span-8 overflow-hidden scale-hover group">
+                <a href="work/st-nicholas-bell-tower.html">
+                    <img alt="St Nicholas Bell Tower" class="w-full h-[716px] object-cover"
+                        src="asset/image/work/st-nicholas-bell-tower-hero.jpg" />
+                </a>
+            </div>
+            <div class="md:col-span-4 flex flex-col justify-end h-full">
+                <div>
+                    <h3 class="font-headline text-3xl mb-4">St Nicholas Bell Tower</h3>
+                    <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-6">Sacral • Ankaran,
+                        Slovenia • 2026</p>
+                    <p class="font-body text-[#1A1A1A] leading-relaxed max-w-sm mb-8 opacity-80">
+                        A modern addition to a modernist church, defining a new vertical presence in the Mediterranean
+                        landscape.
+                    </p>
+                    <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                        href="work/st-nicholas-bell-tower.html">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Block 5: Budin House -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal">
+            <div class="md:col-span-5 md:order-2">
+                <div class="overflow-hidden scale-hover">
+                    <a href="work/budin-house.html">
+                        <img alt="Budin House" class="w-full h-[819px] object-cover"
+                            src="asset/image/work/budin-house-hero.jpg" />
+                    </a>
+                </div>
+            </div>
+            <div class="md:col-span-6 md:col-start-1 md:order-1 text-right md:pr-20">
+                <h3 class="font-headline text-3xl mb-4">Budin House</h3>
+                <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-6">Residential • Slovenia •
+                    2023</p>
+                <p class="font-body text-[#1A1A1A] leading-relaxed max-w-md ml-auto mb-8 opacity-80">
+                    A dialogue between traditional masonry and contemporary glass and wood, integrated into the rural
+                    landscape.
+                </p>
+                <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                    href="work/budin-house.html">View Project</a>
+            </div>
+        </section>
+
+        <!-- Project Block 6: Chinese Massacre Memorial -->
+        <section class="w-full relative py-20 reveal">
+            <div class="overflow-hidden scale-hover w-full h-[921px]">
+                <a href="work/memorial-to-the-victims-of-the-1871-chinese-massacre.html">
+                    <img alt="Chinese Massacre Memorial" class="w-full h-full object-cover"
+                        src="asset/image/work/memorial-to-the-victims-of-the-1871-chinese-massacre-hero.jpg" />
+                </a>
+            </div>
+            <div class="mt-12 max-w-2xl">
+                <h3 class="font-headline text-3xl mb-4">1871 Chinese Massacre Memorial</h3>
+                <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-4">Memorial • Los Angeles,
+                    USA • 2022</p>
+                <p class="font-body text-[#1A1A1A] leading-relaxed opacity-80 mb-8">
+                    A space for reflection and remembrance performance, honoring the history and resilience of the
+                    Chinese community.
+                </p>
+                <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                    href="work/memorial-to-the-victims-of-the-1871-chinese-massacre.html">View Project</a>
+            </div>
+        </section>
+
+        <!-- Project Block 7: Ustje House -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-start reveal">
+            <div class="md:col-span-8 overflow-hidden scale-hover group">
+                <a href="work/ustje-house.html">
+                    <img alt="Ustje House" class="w-full h-[716px] object-cover"
+                        src="asset/image/work/ustje-house-hero.jpg" />
+                </a>
+            </div>
+            <div class="md:col-span-4 flex flex-col justify-end h-full">
+                <div>
+                    <h3 class="font-headline text-3xl mb-4">Ustje House</h3>
+                    <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-6">Residential •
+                        Slovenia • 2022</p>
+                    <p class="font-body text-[#1A1A1A] leading-relaxed max-w-sm mb-8 opacity-80">
+                        A family home in the Mediterranean village of Ustje, designed to harmonize with the local
+                        vernacular and climate.
+                    </p>
+                    <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                        href="work/ustje-house.html">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Block 8: House 41 -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal">
+            <div class="md:col-span-5 md:order-2">
+                <div class="overflow-hidden scale-hover">
+                    <a href="work/house-41.html">
+                        <img alt="House 41" class="w-full h-[819px] object-cover"
+                            src="asset/image/work/house-41-hero.jpg" />
+                    </a>
+                </div>
+            </div>
+            <div class="md:col-span-6 md:col-start-1 md:order-1 text-right md:pr-20">
+                <h3 class="font-headline text-3xl mb-4">House 41</h3>
+                <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-6">Residential • Slovenia •
+                    2020</p>
+                <p class="font-body text-[#1A1A1A] leading-relaxed max-w-md ml-auto mb-8 opacity-80">
+                    Built upon the foundations of an existing structure, House 41 navigates a narrow plot to create a
+                    sequence of light-filled spaces.
+                </p>
+                <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                    href="work/house-41.html">View Project</a>
+            </div>
+        </section>
+
+        <!-- Project Block 9: Two-Family House in Predoslje -->
+        <section class="w-full relative py-20 reveal">
+            <div class="overflow-hidden scale-hover w-full h-[921px]">
+                <a href="work/two-family-house-in-predoslje.html">
+                    <img alt="Two-Family House in Predoslje" class="w-full h-full object-cover"
+                        src="asset/image/work/two-family-house-in-predoslje-hero.jpg" />
+                </a>
+            </div>
+            <div class="mt-12 max-w-2xl">
+                <h3 class="font-headline text-3xl mb-4">House Predoslje</h3>
+                <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-4">Social Housing •
+                    Slovenia • 2019</p>
+                <p class="font-body text-[#1A1A1A] leading-relaxed opacity-80 mb-8">
+                    A charity-led initiative to provide social housing that maintains a high standard of architectural
+                    clarity and human dignity.
+                </p>
+                <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                    href="work/two-family-house-in-predoslje.html">View Project</a>
+            </div>
+        </section>
+
+        <!-- Project Block 10: Pan-European Memorial -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-start reveal">
+            <div class="md:col-span-8 overflow-hidden scale-hover group">
+                <a href="work/pan-european-memorial-victims-totalitarianism.html">
+                    <img alt="Pan-European Memorial" class="w-full h-[716px] object-cover"
+                        src="asset/image/work/pan-european-memorial-victims-totalitarianism-hero.jpg" />
+                </a>
+            </div>
+            <div class="md:col-span-4 flex flex-col justify-end h-full">
+                <div>
+                    <h3 class="font-headline text-3xl mb-4">Pan-European Memorial</h3>
+                    <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-6">Memorial • Belgium •
+                        2018</p>
+                    <p class="font-body text-[#1A1A1A] leading-relaxed max-w-sm mb-8 opacity-80">
+                        A proposal for the European Parliament to honor the victims of totalitarianism through a space
+                        of collective silence.
+                    </p>
+                    <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                        href="work/pan-european-memorial-victims-totalitarianism.html">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Block 11: Tisina House -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal">
+            <div class="md:col-span-5 md:order-2">
+                <div class="overflow-hidden scale-hover">
+                    <a href="work/tisina-house.html">
+                        <img alt="Tisina House" class="w-full h-[819px] object-cover"
+                            src="asset/image/work/tisina-house-hero.jpg" />
+                    </a>
+                </div>
+            </div>
+            <div class="md:col-span-6 md:col-start-1 md:order-1 text-right md:pr-20">
+                <h3 class="font-headline text-3xl mb-4">Tisina House</h3>
+                <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-6">Residential • Slovenia •
+                    2017</p>
+                <p class="font-body text-[#1A1A1A] leading-relaxed max-w-md ml-auto mb-8 opacity-80">
+                    A contemporary family home in the Prekmurje region, where volume and void play with regional
+                    traditions.
+                </p>
+                <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                    href="work/tisina-house.html">View Project</a>
+            </div>
+        </section>
+
+        <!-- Project Block 12: Kavcic House -->
+        <section class="w-full relative py-20 reveal">
+            <div class="overflow-hidden scale-hover w-full h-[921px]">
+                <a href="work/kavcic-house.html">
+                    <img alt="Kavcic House" class="w-full h-full object-cover"
+                        src="asset/image/work/kavcic-house-hero.jpg" />
+                </a>
+            </div>
+            <div class="mt-12 max-w-2xl">
+                <h3 class="font-headline text-3xl mb-4">Kavcic House</h3>
+                <p class="font-label text-[12px] uppercase tracking-widest text-[#999999] mb-4">Residential • Slovenia •
+                    2016</p>
+                <p class="font-body text-[#1A1A1A] leading-relaxed opacity-80 mb-8">
+                    Set on vineyard terraces, the house offers quietude and panoramic views, focused on simple
+                    materiality and light.
+                </p>
+                <a class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all"
+                    href="work/kavcic-house.html">View Project</a>
+            </div>
+        </section>
+
+        <!-- Latest Journal Section -->
+        <section class="reveal !mt-20 pt-8 md:pt-12">
+            <div class="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
+                <h2 class="font-headline text-4xl md:text-[42px] text-[#1A1A1A]">Journal</h2>
+                <a href="news.html"
+                    class="font-label text-xs uppercase tracking-[0.2em] text-[#999999] hover:text-[#1A1A1A] transition-colors border-b border-transparent hover:border-[#1A1A1A] pb-1">View
+                    All Stories</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-x-8 md:gap-y-20">
+                <!-- Journal Item 1 -->
+                <article class="group">
+                    <a href="news/tri-an-monument-dedication.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/71128752007-monument-01-sam.webp" alt="Tri Ân Monument Dedication"
+                            class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">Oct 15, 2023</div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/tri-an-monument-dedication.html">Tri Ân Monument Dedication</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">Several hundred people
+                            attended the Tri Ân Monument dedication ceremony at the Veterans Memorial Park.</p>
+                    </div>
+                </article>
+
+                <!-- Journal Item 2 -->
+                <article class="group">
+                    <a href="news/tri-an-monument-construction.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/IMG_6278.jpg" alt="Tri Ân Monument Construction"
+                            class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">April 25, 2023
+                        </div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/tri-an-monument-construction.html">Monument Construction</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">Construction of the Tri
+                            Ân Monument is underway in Jeffersontown, Kentucky.</p>
+                    </div>
+                </article>
+
+                <!-- Journal Item 3 -->
+                <article class="group">
+                    <a href="news/budin-house-structure.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/IMG-9169-scaled.jpg" alt="Budin House Structure"
+                            class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">May 4, 2022
+                        </div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/budin-house-structure.html">Budin House Structure</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">Structure of the Budin
+                            House is complete and waits for finishing works.</p>
+                    </div>
+                </article>
+
+                <!-- Journal Item 4 -->
+                <article class="group">
+                    <a href="news/tri-an-monument-construction-begins.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/sod-turning-1-1.jpg" alt="Tri Ân Monument Construction Begins"
+                            class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">Dec 16, 2022</div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/tri-an-monument-construction-begins.html">Construction Begins</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">The city of
+                            Jeffersontown broke ground on a new monument honoring Vietnam War veterans.</p>
+                    </div>
+                </article>
+
+                <!-- Journal Item 5 -->
+                <article class="group">
+                    <a href="news/house-41-completes.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/176637211_1423971281269496_926822275510846751_n.jpg"
+                            alt="House 41 Completes" class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">Dec 18, 2020</div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/house-41-completes.html">House 41 Completes</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">The construction of
+                            House 41 in Velike Zablje, Slovenia, is now complete.</p>
+                    </div>
+                </article>
+
+                <!-- Journal Item 6 -->
+                <article class="group">
+                    <a href="news/happy-2021.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/IMG_3361-scaled.jpg" alt="Happy 2021"
+                            class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">Dec 24, 2020</div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/happy-2021.html">Happy 2021!</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">Merry Christmas and
+                            Happy New Year from Grega Vezjak Architecture.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section
+            class="reveal bg-[#1A1A1A] text-white -mx-6 md:-mx-20 px-6 md:px-20 py-24 md:py-32 flex flex-col items-center text-center">
+            <h2 class="font-headline text-4xl md:text-6xl mb-8 max-w-4xl tracking-tight">In pursuit of silence and
+                permanence.</h2>
+            <p class="font-body text-lg md:text-xl text-[#999999] mb-12 max-w-2xl font-light">Let's discuss how we can
+                bring clarity and timelessness to your next architectural project.</p>
+            <a href="profile.html"
+                class="inline-block px-10 py-5 bg-white text-[#1A1A1A] font-label text-xs uppercase tracking-[0.2em] hover:bg-[#F5F3EF] transition-all duration-300">Start
+                a Conversation</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-[#F5F3EF] px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br />
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com"
+                        class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br />
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank"
+                        class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank"
+                        class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank"
+                        class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all">X</a>
+                </div>
+            </div>
+        </div>
+        <div
+            class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all"
+                    href="index.html">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all"
+                    href="work.html">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all"
+                    href="news.html">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all"
+                    href="profile.html">Profile</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all"
+                    href="contact.html">Contact</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all"
+                    href="media.html">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                &copy; 2026 Grega Vezjak Architecture. All Rights Reserved.
+            </p>
+        </div>
+        <div class="flex justify-center mt-12">
+            <a href="https://buraqwebservice.com/" target="_blank"
+                class="font-['Inter'] text-[9px] uppercase tracking-[0.3em] text-[#EBE9E5] hover:text-secondary transition-colors duration-500">
+                Design By Buraq Web Service
+            </a>
+        </div>
+    </footer>
+
+    <script src="asset/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.hero-slider-item');
+            let currentSlide = 0;
+
+            function nextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+
+            setInterval(nextSlide, 6000); // 6 seconds per slide
+
+            // Mobile Menu Toggle
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const toggleMenu = (isOpen) => {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', () => toggleMenu(true));
+            mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+
+            // Close menu on link click
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => toggleMenu(false));
+            });
+        });
+    </script>
+</body>
+
+</html>
