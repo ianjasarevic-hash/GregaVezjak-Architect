@@ -42,14 +42,6 @@ body {
     font-family: 'Newsreader', serif;
 }
 
-.scale-hover img {
-    transition: transform 0.5s ease-in-out;
-}
-
-.scale-hover:hover img {
-    transform: scale(1.02);
-}
-
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
