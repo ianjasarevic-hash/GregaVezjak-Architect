@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TRI Ã‚N MONUMENT â€” Grega Vezjak Architecture</title>
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "on-tertiary-container": "#4c4a46",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary": "#605e5a",
+                        "outline": "#7c766c",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f0ec",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484742",
+                        "surface-container-highest": "#e4e2de",
+                        "on-secondary-container": "#626363",
+                        "tertiary-fixed": "#e6e2dc",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#695d43",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "tertiary-container": "#bdbab4",
+                        "outline-variant": "#cdc5b9",
+                        "surface-variant": "#e4e2de",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-surface": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-low": "#f5f3ef",
+                        "surface": "#fbf9f5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#544931",
+                        "on-primary-fixed-variant": "#50462e",
+                        "surface-bright": "#fbf9f5",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "tertiary-fixed-dim": "#cac6c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-background": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "secondary-container": "#e0dfdf",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#d4c5a5",
+                        "surface-tint": "#695d43",
+                        "primary-fixed": "#f1e1c0",
+                        "on-primary-fixed": "#221b06",
+                        "primary-fixed-dim": "#d4c5a5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        var I18n = {
+            currentLang: 'en',
+            switchLanguage: function(lang) {
+                this.currentLang = lang;
+                try { localStorage.setItem('gva-language', lang); } catch(e) {}
+                this.translate();
+            },
+            translate: function() {
+                var lang = this.currentLang;
+                var langEls = document.querySelectorAll('p[lang], h1[lang], h2[lang], h3[lang], div[lang], span[lang], li[lang]');
+                for (var j = 0; j < langEls.length; j++) {
+                    var elLang = langEls[j].getAttribute('lang');
+                    langEls[j].style.display = (elLang === lang) ? 'block' : 'none';
+                }
+            }
+        };
+    </script>
+    <style>
+        [lang="sl"] { display: none !important; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-4">
+            <a class="font-['Newsreader'] text-2xl font-normal text-[#1A1A1A] tracking-tighter" href="../index.html">Grega Vezjak Arhitekt</a>
+            <div class="desktop-nav flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#C8B99A] border-b border-[#C8B99A] pb-1 transition-colors duration-300" href="../work.html" data-i18n="Work">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../news.html" data-i18n="News">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../profile.html" data-i18n="Profile">Profile</a>
+                
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../media.html" data-i18n="Media">Media</a>
+                <!-- Language Toggle -->
+                <div class="flex items-center gap-1 ml-2">
+                    <button class="lang-toggle font-['Newsreader'] text-[12px] uppercase tracking-[0.15em] transition-colors duration-300 cursor-pointer"
+                        data-lang="en" onclick="I18n.switchLanguage('en')">EN</button>
+                    <span class="text-[#1A1A1A]">|</span>
+                    <button class="lang-toggle font-['Newsreader'] text-[12px] uppercase tracking-[0.15em] hover:text-[#C8B99A] transition-colors duration-300 cursor-pointer"
+                        data-lang="sl" onclick="I18n.switchLanguage('sl')">SL</button>
+                </div>
+            </div>
+            <button id="mobile-menu-open" class="mobile-hamburger text-[#1A1A1A]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#F5F3EF]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../index.html" data-i18n="Home">Home</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../work.html" data-i18n="Work">Work</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../news.html" data-i18n="News">News</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../profile.html" data-i18n="Profile">Profile</a>
+                
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../media.html" data-i18n="Media">Media</a>
+    </div>
+
+    <main class="pt-24">
+        <!-- Hero Section with Slider -->
+        <section class="w-full h-[calc(70vh-50px)] md:h-[calc(90vh-50px)] overflow-hidden relative reveal">
+            <div id="project-slider" class="w-full h-full relative">
+                <img id="slider-img" src="../asset/image/work/tri-an-monument-hero.jpg" alt="TRI AN MONUMENT" class="w-full h-full object-cover">
+                <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 flex items-center justify-center hover:bg-white transition-colors">
+                    <span class="text-2xl">&larr;</span>
+                </button>
+                <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 flex items-center justify-center hover:bg-white transition-colors">
+                    <span class="text-2xl">&rarr;</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Project Header --><section class="max-w-[1920px] mx-auto px-6 md:px-20 py-20 md:py-32">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+                <div class="md:col-span-4 reveal">
+                    <h1 class="font-headline text-4xl md:text-6xl font-light leading-tight mb-8">TRI Ã‚N MONUMENT</h1>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1" data-i18n="Location">Location</p>
+                            <p class="font-body text-sm text-on-surface">Louisville, Kentucky</p>
+                        </div>
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1" data-i18n="Year">Year</p>
+                            <p class="font-body text-sm text-on-surface">2016</p>
+                        </div>
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1" data-i18n="Status">Status</p>
+                            <p class="font-body text-sm text-on-surface">winning competition entry</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 md:col-start-6 reveal">
+                    <div class="font-headline text-xl md:text-2xl leading-relaxed text-on-surface-variant space-y-8 italic">
+<p lang="en">In Louisville, Kentucky, a diverse group of citizens led by Yung Nguyen, an immigrant from Vietnam, has conceived idea of a monument of thanksgiving; a place of special recognition for the tremendous sacrifices the American and South Vietnamese Armed Forces made during the Vietnam War in order to give the Vietnamese people a chance to live in freedom.</p>
+<p lang="en">The Monument is situated on a sloping hillside site within a park with other monuments to veterans nearby.</p>
+<p lang="en">Line of high columns invites distant observer to take a closer look. 8 columns stand side by side, facing the rising sun, the forest, aligned with the river, representing line of defence and connection between two worlds. Vietnam experience has formed the soldiers and made them brothers; 8 bamboo formed concrete columns are exposed to the sun and rain, reaching to sky and in the same time supporting it, honouring people from 8 countries that fought for freedom. They are eternal witness in a quiet recessed courtyard, surrounded by walls, paths, ramps and stairs that provide intimacy, access and circulation in the monument and beyond. Walls are covered with images and words of history, war and of those who served. This prepares visitor for the deep experience. Sitting walls around the courtyard allows quiet contemplation. Monumental courtyard, suited for outdoor gatherings, is opening down to the hillside slope with green terraces. Suddenly the space becomes elevated base. Heavy altar made of solid Vietnamese polished granite is laid in front of strong columns, on terraces, right between two worlds, recognising their timeless sacrifice. Distant views framed by the columns become part of the experience. Trees are echoed in the columns; it appears as if they separated from the forest to the higher, safer place. Recessed monument allows uninterrupted views from outside to the landscape, other monuments and in the monument itself. Different levels and accesses provides diverse experience, also for those with disabilities. Material used are durable and long lasting.</p>
+<p lang="sl">V Louisvilleu v Kentuckyju je raznolika skupina prebivalcev pod vodstvom Yung Nguyen, priseljenec iz Vietnama, zasnovala idejo spomenika hvaležnosti — prostora posebnega priznanja za izjemne žrtve, ki so jih ameriške in južnovietnamske oborožene sile dale med vietnamsko vojno, da bi vietnamskemu ljudstvu omogočile priložnost za življenje v svobodi.</p>
+<p lang="sl">Spomenik je umeščen na nagnjeno hribovito lokacijo v parku, kjer se v bližini nahajajo tudi drugi spomeniki veteranom.</p>
+<p lang="sl">Linija visokih stebrov vabi oddaljenega opazovalca, da se približa. Osem stebrov stoji drug ob drugem, obrnjeni proti vzhajajočemu soncu, gozdu in poravnani z reko, kot simbol obrambne linije in povezave med dvema svetovoma. Izkušnja Vietnama je oblikovala vojake in jih naredila za brate. Osem betonskih stebrov v obliki bambusa je izpostavljenih soncu in dežju, segajo proti nebu in ga hkrati simbolno podpirajo, ter častijo ljudi iz osmih držav, ki so se borile za svobodo. So večni pričevalci v tihem, poglobljenem dvorišču, obdanem z zidovi, potmi, klančinami in stopnicami, ki omogočajo intimnost, dostop in kroženje skozi spomenik in onkraj njega. Stene so prekrite s podobami in besedili zgodovine, vojne in tistih, ki so služili. To obiskovalca pripravi na globoko izkušnjo. Sedežni zidovi okoli dvorišča omogočajo mirno razmišljanje. Monumentalno dvorišče, primerno za večja zbiranja na prostem, se odpira navzdol po pobočju v zelenih terasah. Prostor se nenadoma preobrazi v dvignjeno ploščad. Težki oltar iz masivnega poliranega vietnamskega granita je postavljen pred močnimi stebri na terasah, neposredno med dva svetova, kot priznanje njihovemu brezčasnemu žrtvovanju. Oddaljeni pogledi, uokvirjeni s stebri, postanejo del izkušnje. Drevesa se zrcalijo v stebrih, kot da so se iz gozda premaknila v višji, varnejši prostor. Vpogreznjen spomenik omogoča nemoten pogled od zunaj na krajino, druge spomenike in v sam spomenik. Različne višine in dostopi omogočajo raznoliko izkušnjo, tudi za osebe z invalidnostjo. Uporabljeni materiali so trajni in dolgotrajni.</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mobile-gallery" class="hidden"></section>
+
+
+
+        <!-- Back Link -->
+        <section class="max-w-[1920px] mx-auto px-6 md:px-20 py-20 border-t border-outline-variant flex justify-center reveal">
+            <a href="../work.html" class="font-label text-[12px] uppercase tracking-[0.3em] text-on-surface hover:text-primary transition-colors duration-500" data-i18n="Back to Projects">
+                Back to Projects
+            </a>
+        </section>
+    </main>
+
+        <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-[#F5F3EF] px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Studio">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br/>
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Contact">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com" class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br/>
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Social">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Instagram">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Facebook">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="X">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../index.html" data-i18n="Home">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../work.html" data-i18n="Work">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../news.html" data-i18n="Journal">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../profile.html" data-i18n="Profile">Profile</a>
+                
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../media.html" data-i18n="Media">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                © 2026 GREGA VEZJAK ARHITEKT.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../asset/js/i18n.js"></script>    <script src="../asset/js/slider.js"></script>
+    <script src="../asset/js/app.js"></script>
+    <script>
+        var I18n = {
+            currentLang: 'en',
+            switchLanguage: function(lang) {
+                this.currentLang = lang;
+                try { localStorage.setItem('gva-language', lang); } catch(e) {}
+                this.translate();
+            },
+            translate: function() {
+                var lang = this.currentLang;
+                var langEls = document.querySelectorAll('p[lang], h1[lang], h2[lang], h3[lang], div[lang], span[lang], li[lang]');
+                for (var j = 0; j < langEls.length; j++) {
+                    var elLang = langEls[j].getAttribute('lang');
+                    langEls[j].style.display = (elLang === lang) ? 'block' : 'none';
+                }
+            }
+        };
+
+        function initLanguage() {
+            I18n.translate();
+        }
+
+        // Run language on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initLanguage);
+        } else {
+            initLanguage();
+        }
+
+        // Mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            var mobileMenuOpen = document.getElementById('mobile-menu-open');
+            var mobileMenuClose = document.getElementById('mobile-menu-close');
+            var mobileMenu = document.getElementById('mobile-menu');
+
+            var toggleMenu = function(isOpen) {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', function() { toggleMenu(true); });
+            mobileMenuClose.addEventListener('click', function() { toggleMenu(false); });
+        });
+    </script>
+</body>
+</html>

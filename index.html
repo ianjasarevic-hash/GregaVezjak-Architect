@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Grega Vezjak — Architecture of Silence</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "on-tertiary-container": "#4c4a46",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary": "#605e5a",
+                        "outline": "#7c766c",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f0ec",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484742",
+                        "surface-container-highest": "#e4e2de",
+                        "on-secondary-container": "#626363",
+                        "tertiary-fixed": "#e6e2dc",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#695d43",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "tertiary-container": "#bdbab4",
+                        "outline-variant": "#cdc5b9",
+                        "surface-variant": "#e4e2de",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-surface": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-low": "#f5f3ef",
+                        "surface": "#fbf9f5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#544931",
+                        "on-primary-fixed-variant": "#50462e",
+                        "surface-bright": "#fbf9f5",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "tertiary-fixed-dim": "#cac6c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-background": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "secondary-container": "#e0dfdf",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#d4c5a5",
+                        "surface-tint": "#695d43",
+                        "primary-fixed": "#f1e1c0",
+                        "on-primary-fixed": "#221b06",
+                        "primary-fixed-dim": "#d4c5a5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-slider-item {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-slider-item.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-surface-container-low text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl transition-transform duration-500">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-5">
+            <a class="font-['Newsreader'] text-xl md:text-3xl font-normal text-[#1A1A1A] tracking-tighter"
+                href="index.html">Grega Vezjak Arhitekt</a>
+            <div class="desktop-nav flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300"
+                    href="work.html" data-i18n="Work">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300"
+                    href="news.html" data-i18n="News">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300"
+                    href="profile.html" data-i18n="Profile">Profile</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300"
+                    href="media.html" data-i18n="Media">Media</a>
+                <!-- Language Toggle -->
+                <div class="flex items-center gap-1 ml-2">
+                    <button id="btn-en-1" class="lang-toggle font-['Newsreader'] text-xs md:text-[12px] uppercase tracking-[0.15em] transition-colors duration-300 cursor-pointer p-2 md:p-0"
+                        data-lang="en" onclick="I18n.switchLanguage('en')">EN</button>
+                    <span class="text-[#1A1A1A] hidden md:inline">|</span>
+                    <button id="btn-sl-1" class="lang-toggle font-['Newsreader'] text-xs md:text-[12px] uppercase tracking-[0.15em] hover:text-[#C8B99A] transition-colors duration-300 cursor-pointer p-2 md:p-0"
+                        data-lang="sl" onclick="I18n.switchLanguage('sl')">SL</button>
+                </div>
+            </div>
+            <button id="mobile-menu-open" class="mobile-hamburger text-[#1A1A1A] p-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[100] bg-[#F5F3EF]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-xl md:text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors"
+            href="index.html" data-i18n="Home">Home</a>
+        <a class="font-headline text-xl md:text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors"
+            href="work.html" data-i18n="Work">Work</a>
+        <a class="font-headline text-xl md:text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors"
+            href="news.html" data-i18n="News">News</a>
+        <a class="font-headline text-xl md:text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors"
+            href="profile.html" data-i18n="Profile">Profile</a>
+        <a class="font-headline text-xl md:text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors"
+            href="media.html" data-i18n="Media">Media</a>
+        <!-- Language Toggle (Mobile) -->
+        <div class="flex items-center gap-2 mt-4">
+            <button id="btn-en-2" class="lang-toggle font-headline text-lg uppercase tracking-[0.2em] transition-colors duration-300 cursor-pointer"
+                data-lang="en" onclick="I18n.switchLanguage('en')">EN</button>
+            <span class="text-[#1A1A1A]">|</span>
+            <button id="btn-sl-2" class="lang-toggle font-headline text-lg uppercase tracking-[0.2em] hover:text-[#C8B99A] transition-colors duration-300 cursor-pointer"
+                data-lang="sl" onclick="I18n.switchLanguage('sl')">SL</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative w-full h-screen overflow-hidden">
+        <div class="hero-slider-item active">
+            <img alt="Urban Confluence" class="w-full h-full object-cover"
+                src="asset/image/work/urban-confluence-hero.jpg" />
+        </div>
+        <div class="hero-slider-item">
+            <img alt="Oi Manawa Memorial" class="w-full h-full object-cover"
+                src="asset/image/work/oi-manawa-hero.jpg" />
+        </div>
+        <div class="hero-slider-item">
+            <img alt="Pan-European Memorial" class="w-full h-full object-cover"
+                src="asset/image/work/pan-european-memorial-hero.jpg" />
+        </div>
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#F5F3EF]/40 via-transparent to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-16 left-6 md:bottom-24 md:left-20 z-20">
+            <h1 class="font-headline text-4xl md:text-7xl lg:text-[85px] leading-tight text-[#1A1A1A] font-light">Grega Vezjak Arhitekt</h1>
+        </div>
+    </header>
+
+    <main class="w-full px-6 md:px-20 py-32 space-y-48">
+        <section class="max-w-7xl reveal">
+            <h2 class="font-headline text-2xl md:text-4xl text-[#1A1A1A]" data-i18n="Selected Work">Selected Work</h2>
+        </section>
+
+        <!-- Project Block 2: Tri Ân Monument -->
+        <a href="work/tri-an-monument.html" class="block group">
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal">
+            <div class="md:col-span-5 md:order-2">
+                <div class="overflow-hidden">
+                    <img alt="Tri Ân Monument" class="w-full h-48 md:h-48 md:h-[819px] object-cover group-hover:scale-105 transition-transform duration-700"
+                        src="asset/image/work/tri-an-hero.jpg" />
+                </div>
+            </div>
+            <div class="md:col-span-6 md:col-start-1 md:order-1 text-right md:pr-20">
+                <h3 class="font-headline text-xl md:text-3xl mb-4 group-hover:text-[#C8B99A] transition-colors">Tri Ân Monument</h3>
+                <span class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all">View Project</span>
+            </div>
+        </section>
+        </a>
+
+        <!-- Project Block 3: Urban Confluence Silicon Valley -->
+        <a href="work/urban-confluence-silicon-valley.html" class="block group">
+        <section class="w-full relative py-20 reveal">
+            <div class="overflow-hidden w-full h-48 md:h-[921px]">
+                <img alt="Urban Confluence Silicon Valley" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    src="asset/image/work/urban-confluence-hero.jpg" />
+            </div>
+            <div class="mt-12 max-w-2xl">
+                <h3 class="font-headline text-3xl mb-4 group-hover:text-[#C8B99A] transition-colors">Urban Confluence</h3>
+                <span class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all">View Project</span>
+            </div>
+        </section>
+        </a>
+
+        <!-- Project Block 4: St Nicholas Bell Tower -->
+        <a href="work/st-nicholas-bell-tower.html" class="block group">
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-start reveal">
+            <div class="md:col-span-8 overflow-hidden group">
+                <img alt="St Nicholas Bell Tower" class="w-full h-48 md:h-[716px] object-cover group-hover:scale-105 transition-transform duration-700"
+                    src="asset/image/work/st-nicholas-bell-tower-hero.jpg" />
+            </div>
+            <div class="md:col-span-4 flex flex-col justify-end h-full">
+                <div>
+                    <h3 class="font-headline text-3xl mb-4 group-hover:text-[#C8B99A] transition-colors">St Nicholas Bell Tower</h3>
+                    <span class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all">View Project</span>
+                </div>
+            </div>
+        </section>
+        </a>
+
+        <!-- Project Block 5: Budin House -->
+        <a href="work/budin-house.html" class="block group">
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal">
+            <div class="md:col-span-5 md:order-2">
+                <div class="overflow-hidden">
+                    <img alt="Budin House" class="w-full h-48 md:h-[819px] object-cover group-hover:scale-105 transition-transform duration-700"
+                        src="asset/image/work/budin-house-hero.jpg" />
+                </div>
+            </div>
+            <div class="md:col-span-6 md:col-start-1 md:order-1 text-right md:pr-20">
+                <h3 class="font-headline text-3xl mb-4 group-hover:text-[#C8B99A] transition-colors">Budin House</h3>
+                <span class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all">View Project</span>
+            </div>
+        </section>
+        </a>
+
+        <!-- Project Block 6: Chinese Massacre Memorial -->
+        <a href="work/memorial-to-the-victims-of-the-1871-chinese-massacre.html" class="block group">
+        <section class="w-full relative py-20 reveal">
+            <div class="overflow-hidden w-full h-48 md:h-[921px]">
+                <img alt="Chinese Massacre Memorial" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    src="asset/image/work/memorial-to-the-victims-of-the-1871-chinese-massacre-hero.jpg" />
+            </div>
+            <div class="mt-12 max-w-2xl">
+                <h3 class="font-headline text-3xl mb-4 group-hover:text-[#C8B99A] transition-colors">1871 Chinese Massacre Memorial</h3>
+                <span class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all">View Project</span>
+            </div>
+        </section>
+        </a>
+
+        <!-- Project Block 7: Ustje House -->
+        <a href="work/ustje-house.html" class="block group">
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-start reveal">
+            <div class="md:col-span-8 overflow-hidden group">
+                <img alt="Ustje House" class="w-full h-48 md:h-[716px] object-cover group-hover:scale-105 transition-transform duration-700"
+                    src="asset/image/work/ustje-house-hero.jpg" />
+            </div>
+            <div class="md:col-span-4 flex flex-col justify-end h-full">
+                <div>
+                    <h3 class="font-headline text-3xl mb-4 group-hover:text-[#C8B99A] transition-colors">Ustje House</h3>
+                    <span class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all">View Project</span>
+                </div>
+            </div>
+        </section>
+        </a>
+
+        <!-- Project Block 8: House 41 -->
+        <a href="work/house-41.html" class="block group">
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal">
+            <div class="md:col-span-5 md:order-2">
+                <div class="overflow-hidden">
+                    <img alt="House 41" class="w-full h-48 md:h-[819px] object-cover group-hover:scale-105 transition-transform duration-700"
+                        src="asset/image/work/house-41-hero.jpg" />
+                </div>
+            </div>
+            <div class="md:col-span-6 md:col-start-1 md:order-1 text-right md:pr-20">
+                <h3 class="font-headline text-3xl mb-4 group-hover:text-[#C8B99A] transition-colors">House 41</h3>
+                <span class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all">View Project</span>
+            </div>
+        </section>
+        </a>
+
+        <!-- Project Block 9: Two-Family House in Predoslje -->
+        <a href="work/two-family-house-in-predoslje.html" class="block group">
+        <section class="w-full relative py-20 reveal">
+            <div class="overflow-hidden w-full h-48 md:h-[921px]">
+                <img alt="Two-Family House in Predoslje" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    src="asset/image/work/two-family-house-in-predoslje-hero.jpg" />
+            </div>
+            <div class="mt-12 max-w-2xl">
+                <h3 class="font-headline text-3xl mb-4 group-hover:text-[#C8B99A] transition-colors">House Predoslje</h3>
+                <span class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all">View Project</span>
+            </div>
+        </section>
+        </a>
+
+        <!-- Project Block 10: Pan-European Memorial -->
+        <a href="work/pan-european-memorial-victims-totalitarianism.html" class="block group">
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-start reveal">
+            <div class="md:col-span-8 overflow-hidden group">
+                <img alt="Pan-European Memorial" class="w-full h-48 md:h-[716px] object-cover group-hover:scale-105 transition-transform duration-700"
+                    src="asset/image/work/pan-european-memorial-victims-totalitarianism-hero.jpg" />
+            </div>
+            <div class="md:col-span-4 flex flex-col justify-end h-full">
+                <div>
+                    <h3 class="font-headline text-3xl mb-4 group-hover:text-[#C8B99A] transition-colors">Pan-European Memorial</h3>
+                    <span class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all">View Project</span>
+                </div>
+            </div>
+        </section>
+        </a>
+
+        <!-- Project Block 11: Tisina House -->
+        <a href="work/tisina-house.html" class="block group">
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal">
+            <div class="md:col-span-5 md:order-2">
+                <div class="overflow-hidden">
+                    <img alt="Tisina House" class="w-full h-48 md:h-[819px] object-cover group-hover:scale-105 transition-transform duration-700"
+                        src="asset/image/work/tisina-house-hero.jpg" />
+                </div>
+            </div>
+            <div class="md:col-span-6 md:col-start-1 md:order-1 text-right md:pr-20">
+                <h3 class="font-headline text-3xl mb-4 group-hover:text-[#C8B99A] transition-colors">Tisina House</h3>
+                <span class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all">View Project</span>
+            </div>
+        </section>
+        </a>
+
+        <!-- Project Block 12: Kavcic House -->
+        <a href="work/kavcic-house.html" class="block group">
+        <section class="w-full relative py-20 reveal">
+            <div class="overflow-hidden w-full h-48 md:h-[921px]">
+                <img alt="Kavcic House" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    src="asset/image/work/kavcic-house-hero.jpg" />
+            </div>
+            <div class="mt-12 max-w-2xl">
+                <h3 class="font-headline text-3xl mb-4 group-hover:text-[#C8B99A] transition-colors">Kavcic House</h3>
+                <span class="inline-block font-label text-[12px] uppercase tracking-widest border-b border-[#C8B99A] pb-1 hover:border-b-2 transition-all">View Project</span>
+            </div>
+        </section>
+        </a>
+
+        <!-- Latest Journal Section -->
+        <section class="reveal !mt-20 pt-8 md:pt-12">
+            <div class="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
+                <h2 class="font-headline text-3xl md:text-4xl text-[#1A1A1A]" data-i18n="Journal">Journal</h2>
+                <a href="news.html"
+                    class="font-label text-xs uppercase tracking-[0.2em] text-[#999999] hover:text-[#1A1A1A] transition-colors border-b border-transparent hover:border-[#1A1A1A] pb-1" data-i18n="Back to Projects">View
+                    All Stories</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-x-8 md:gap-y-20">
+                <!-- Journal Item 1 -->
+                <article class="group">
+                    <a href="news/tri-an-monument-dedication.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/71128752007-monument-01-sam.webp" alt="Tri Ân Monument Dedication"
+                            class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">Oct 15, 2023</div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/tri-an-monument-dedication.html">Tri Ân Monument Dedication</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">Several hundred people
+                            attended the Tri Ân Monument dedication ceremony at the Veterans Memorial Park.</p>
+                    </div>
+                </article>
+
+                <!-- Journal Item 2 -->
+                <article class="group">
+                    <a href="news/tri-an-monument-construction.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/IMG_6278.jpg" alt="Tri Ân Monument Construction"
+                            class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">April 25, 2023
+                        </div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/tri-an-monument-construction.html">Monument Construction</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">Construction of the Tri
+                            Ân Monument is underway in Jeffersontown, Kentucky.</p>
+                    </div>
+                </article>
+
+                <!-- Journal Item 3 -->
+                <article class="group">
+                    <a href="news/budin-house-structure.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/IMG-9169-scaled.jpg" alt="Budin House Structure"
+                            class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">May 4, 2022
+                        </div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/budin-house-structure.html">Budin House Structure</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">Structure of the Budin
+                            House is complete and waits for finishing works.</p>
+                    </div>
+                </article>
+
+                <!-- Journal Item 4 -->
+                <article class="group">
+                    <a href="news/tri-an-monument-construction-begins.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/sod-turning-1-1.jpg" alt="Tri Ân Monument Construction Begins"
+                            class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">Dec 16, 2022</div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/tri-an-monument-construction-begins.html">Construction Begins</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">The city of
+                            Jeffersontown broke ground on a new monument honoring Vietnam War veterans.</p>
+                    </div>
+                </article>
+
+                <!-- Journal Item 5 -->
+                <article class="group">
+                    <a href="news/house-41-completes.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/176637211_1423971281269496_926822275510846751_n.jpg"
+                            alt="House 41 Completes" class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">Dec 18, 2020</div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/house-41-completes.html">House 41 Completes</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">The construction of
+                            House 41 in Velike Zablje, Slovenia, is now complete.</p>
+                    </div>
+                </article>
+
+                <!-- Journal Item 6 -->
+                <article class="group">
+                    <a href="news/happy-2021.html"
+                        class="block mb-8 aspect-[4/5] overflow-hidden bg-surface-container scale-hover">
+                        <img src="asset/images/news/IMG_3361-scaled.jpg" alt="Happy 2021"
+                            class="w-full h-full object-cover">
+                    </a>
+                    <div class="space-y-4">
+                        <div class="font-label text-[10px] uppercase tracking-[0.2em] text-[#999999]">Dec 24, 2020</div>
+                        <h4 class="font-headline text-2xl group-hover:text-[#C8B99A] transition-colors"><a
+                                href="news/happy-2021.html">Happy 2021!</a></h4>
+                        <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2">Merry Christmas and
+                            Happy New Year from Grega Vezjak Architecture.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+            </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-[#F5F3EF] px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Studio">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br />
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Contact">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com"
+                        class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br />
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Social">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank"
+                        class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Instagram">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank"
+                        class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Facebook">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank"
+                        class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="X">X</a>
+                </div>
+            </div>
+        </div>
+        <div
+            class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all"
+                    href="index.html" data-i18n="Home">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all"
+                    href="work.html" data-i18n="Work">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all"
+                    href="news.html" data-i18n="Journal">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all"
+                    href="profile.html" data-i18n="Profile">Profile</a>
+
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all"
+                    href="media.html" data-i18n="Media">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                &copy; 2026 GREGA VEZJAK ARHITEKT.
+            </p>
+        </div>
+        <div class="flex justify-center mt-12">
+            <a href="https://buraqwebservice.com/" target="_blank"
+                class="font-['Inter'] text-[9px] uppercase tracking-[0.3em] text-[#EBE9E5] hover:text-secondary transition-colors duration-500">
+                Design By Buraq Web Service
+            </a>
+        </div>
+    </footer>
+
+    <script src="asset/js/i18n.js"></script>
+    <script src="asset/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.hero-slider-item');
+            let currentSlide = 0;
+
+            function nextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+
+            setInterval(nextSlide, 6000); // 6 seconds per slide
+
+            // Mobile Menu Toggle
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const toggleMenu = (isOpen) => {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', () => toggleMenu(true));
+            mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+
+            // Language toggle visual feedback
+            function updateLangButtons() {
+                const lang = I18n.currentLang;
+                const btnEn1 = document.getElementById('btn-en-1');
+                const btnSl1 = document.getElementById('btn-sl-1');
+                const btnEn2 = document.getElementById('btn-en-2');
+                const btnSl2 = document.getElementById('btn-sl-2');
+                if (btnEn1) btnEn1.style.color = lang === 'en' ? '#C8B99A' : '';
+                if (btnSl1) btnSl1.style.color = lang === 'sl' ? '#C8B99A' : '';
+                if (btnEn2) btnEn2.style.color = lang === 'en' ? '#C8B99A' : '';
+                if (btnSl2) btnSl2.style.color = lang === 'sl' ? '#C8B99A' : '';
+            }
+
+            // Update on language change
+            const originalSwitch = I18n.switchLanguage;
+            I18n.switchLanguage = function(lang) {
+                originalSwitch.call(this, lang);
+                updateLangButtons();
+            };
+
+            // Set initial button state
+            updateLangButtons();
+
+            // Close menu on link click
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => toggleMenu(false));
+            });
+        });
+    </script>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <span id="lightbox-prev" class="lightbox-nav lightbox-prev">&#8249;</span>
+        <span id="lightbox-next" class="lightbox-nav lightbox-next">&#8250;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Project image">
+        </div>
+        <div id="lightbox-counter" class="lightbox-counter"></div>
+    </div>
+</body>
+
+</html>

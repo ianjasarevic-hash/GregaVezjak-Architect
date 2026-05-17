@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MEMORIAL TO THE VICTIMS OF THE 1871 CHINESE MASSACRE â€” Grega Vezjak Architecture</title>
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "on-tertiary-container": "#4c4a46",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary": "#605e5a",
+                        "outline": "#7c766c",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f0ec",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484742",
+                        "surface-container-highest": "#e4e2de",
+                        "on-secondary-container": "#626363",
+                        "tertiary-fixed": "#e6e2dc",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#695d43",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "tertiary-container": "#bdbab4",
+                        "outline-variant": "#cdc5b9",
+                        "surface-variant": "#e4e2de",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-surface": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-low": "#f5f3ef",
+                        "surface": "#fbf9f5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#544931",
+                        "on-primary-fixed-variant": "#50462e",
+                        "surface-bright": "#fbf9f5",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "tertiary-fixed-dim": "#cac6c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-background": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "secondary-container": "#e0dfdf",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#d4c5a5",
+                        "surface-tint": "#695d43",
+                        "primary-fixed": "#f1e1c0",
+                        "on-primary-fixed": "#221b06",
+                        "primary-fixed-dim": "#d4c5a5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-4">
+            <a class="font-['Newsreader'] text-2xl font-normal text-[#1A1A1A] tracking-tighter" href="../index.html">Grega Vezjak Arhitekt</a>
+            <div class="desktop-nav flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#C8B99A] border-b border-[#C8B99A] pb-1 transition-colors duration-300" href="../work.html" data-i18n="Work">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../news.html" data-i18n="News">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../profile.html" data-i18n="Profile">Profile</a>
+                
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../media.html" data-i18n="Media">Media</a>
+                <!-- Language Toggle -->
+                <div class="flex items-center gap-1 ml-2">
+                    <button class="lang-toggle font-['Newsreader'] text-[12px] uppercase tracking-[0.15em] transition-colors duration-300 cursor-pointer"
+                        data-lang="en" onclick="I18n.switchLanguage('en')">EN</button>
+                    <span class="text-[#1A1A1A]">|</span>
+                    <button class="lang-toggle font-['Newsreader'] text-[12px] uppercase tracking-[0.15em] hover:text-[#C8B99A] transition-colors duration-300 cursor-pointer"
+                        data-lang="sl" onclick="I18n.switchLanguage('sl')">SL</button>
+                </div>
+            </div>
+            <button id="mobile-menu-open" class="mobile-hamburger text-[#1A1A1A]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#F5F3EF]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../index.html" data-i18n="Home">Home</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../work.html" data-i18n="Work">Work</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../news.html" data-i18n="News">News</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../profile.html" data-i18n="Profile">Profile</a>
+                
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../media.html" data-i18n="Media">Media</a>
+    </div>
+
+    <main class="pt-24">
+        <!-- Hero Section with Slider -->
+        <section class="w-full h-[calc(70vh-50px)] md:h-[calc(90vh-50px)] overflow-hidden relative reveal">
+            <div id="project-slider" class="w-full h-full relative">
+                <img id="slider-img" src="../asset/image/work/memorial-to-the-victims-of-the-1871-chinese-massacre-hero.jpg" alt="MEMORIAL TO THE VICTIMS OF THE 1871 CHINESE MASSACRE" class="w-full h-full object-cover">
+                <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 flex items-center justify-center hover:bg-white transition-colors">
+                    <span class="text-2xl">&larr;</span>
+                </button>
+                <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 flex items-center justify-center hover:bg-white transition-colors">
+                    <span class="text-2xl">&rarr;</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Project Header --><section class="max-w-[1920px] mx-auto px-6 md:px-20 py-20 md:py-32">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+                <div class="md:col-span-4 reveal">
+                    <h1 class="font-headline text-4xl md:text-6xl font-light leading-tight mb-8">MEMORIAL TO THE VICTIMS OF THE 1871 CHINESE MASSACRE</h1>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1" data-i18n="Location">Location</p>
+                            <p class="font-body text-sm text-on-surface">TBA</p>
+                        </div>
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1" data-i18n="Year">Year</p>
+                            <p class="font-body text-sm text-on-surface">2022</p>
+                        </div>
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1" data-i18n="Status">Status</p>
+                            <p class="font-body text-sm text-on-surface">competition entry</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 md:col-start-6 reveal">
+                    <div class="font-headline text-xl md:text-2xl leading-relaxed text-on-surface-variant space-y-8 italic">
+<p lang="en">Los Angeles, California</p>
+<p lang="sl">Los Angeles, Kalifornija</p>
+<p lang="en">To honor the lives violently taken, acknowledge one of the most horrific events in the city's history, to reconcile with that past, to spread knowledge about a long hidden tragedy, serve as a public commemoration site and a warning against senseless violence for the future. The memorial needs to be instantly and universally recognizable, because it has a purpose for people of different backgrounds. It needs to surpass current fashions that will be of no use tomorrow, but be a timeless memorial, a place for universal experience and intimate connection. Victims' remains were long ago transferred from the L.A. cemetery to their homeland, the massacre was forgotten. To again take part in this diverse community, in their city that now pays respect and acknowledges its history, we take soil from different parts of China and put it in 18 blocks of polished red Chinese granite, each in casket-like proportions. This creates a real physical connection and meaningfully engages the community in this process. To reject silence we place blocks one on top of the other, visible from a distance, reaching towards the sky. Consequently the memorial takes the shape of a high stele that is universally recognizable but especially so in Chinese culture. Steles are found at nearly every significant mountain and historical site in China. The stele will be carved with carefully selected and beautifully designed letters in Chinese and English and enhanced with gold. Letters could cover part or the whole of the surface. Use of granite guarantees timelessness and endurance. The stone's sheer weight is strongly felt around the site as one is reflecting the gravity of the tragedy on the polished surface that shows our changing and yet undefined present mirroring on the heavy granite – past set in stone. Strong red color of hard and sharp granite symbolizes the violent way of lives lost and it is also a recognizable color of the Chinese culture. This strong unchanging presence is enhanced with the contrast of embracing emptiness of surrounding space created by encircling trees, changing in seasons. Memorial creates a serious but uplifting spatial and emotional experience fitting for the magnitude of the event, incorporating surroundings by taking advantage of the Primary site 2. Located in the center, it meaningfully connects the sites of the tragedy with the museum. Memorial is a pause in the everyday life of the city, an invitation of engagement, enrichment of the community with a disruption that now needs to be recognized and then becomes an important part of the city. As a beacon it connects the city to its history – that is learned in the museum building facing the memorial. Memorial is not the museum, loaded with every piece of information, but represents the essence, a real physical manifestation of the specific tragic event and the victims. The memorial with its surroundings will be lit at night to shine in the dark. The area will be enhanced with new paving that could also include road and sidewalks. Memorial is the center point, it acts as a physical and historical exclamation mark; it is prominently visible, it draws attention to the tragedy and with its timeless monumental design it is also easily memorable. The surroundings become involved in the experience. Memorial points through its presence to wider understanding of the tragedy with connections to the Secondary Sites. Each of the secondary sites will have a slab of red polished granite with a text description, so that all sites are specific but inter-connected in one experience. The slab will be equipped with a digital sign, linking sites together in a walking tour, with possible audio and VR experience. Where possible, landscaping that reacts to the specific site will be created.</p>
+<p lang="sl">Da bi počastili nasilno odvzeta življenja, priznali enega najstrašnejših dogodkov v zgodovini mesta, se spravili s to preteklostjo, širili zavedanje o dolgo zamolčani tragediji ter ustvarili javni prostor spomina in opozorilo pred nesmiselnim nasiljem v prihodnosti. Spominsko obeležje mora biti takoj in univerzalno prepoznavno, saj nagovarja ljudi različnih ozadij. Preseči mora trenutne modne smernice, ki bodo jutri brez pomena, ter postati brezčasno obeležje — prostor univerzalne izkušnje in intimne povezanosti.
+
+Posmrtni ostanki žrtev so bili že davno prepeljani s pokopališča v Los Angelesu v njihovo domovino, pokol pa je bil pozabljen. Da bi ponovno postali del te raznolike skupnosti in mesta, ki danes izkazuje spoštovanje ter priznava svojo zgodovino, smo vzeli zemljo iz različnih delov Kitajske in jo umestili v 18 blokov poliranega rdečega kitajskega granita, vsak v proporcih krste. Tako nastane resnična fizična povezava, ki skupnost smiselno vključuje v ta proces.
+
+Da bi zavrnili molk, bloke zlagamo enega na drugega, tako da so vidni že od daleč in segajo proti nebu. Spominsko obeležje zato prevzame obliko visoke stele, ki je univerzalno prepoznavna, še posebej pa v kitajski kulturi. Stele najdemo skoraj na vsaki pomembnejši gori in zgodovinskem kraju na Kitajskem. V stelo bodo vklesani skrbno izbrani in oblikovani napisi v kitajščini in angleščini, poudarjeni z zlatom. Napisi lahko prekrivajo del ali celotno površino. Uporaba granita zagotavlja trajnost in brezčasnost.
+
+Silovita teža kamna je močno prisotna v prostoru, medtem ko obiskovalec na polirani površini razmišlja o teži tragedije; na granitu se zrcali naša spreminjajoča se in še vedno nedoločena sedanjost — preteklost, vklesana v kamen. Močna rdeča barva trdega in ostrega granita simbolizira nasilno izgubljena življenja, hkrati pa je tudi prepoznavna barva kitajske kulture. Ta močna in nespremenljiva prisotnost je poudarjena s kontrastom objemajoče praznine okoliškega prostora, ki ga ustvarja krog dreves, spreminjajočih se skozi letne čase.
+
+Spominsko obeležje ustvarja resno, a hkrati vzneseno prostorsko in čustveno izkušnjo, primerno razsežnosti dogodka, ter vključuje okolico z izkoriščanjem prednosti osrednje lokacije 2. Postavljeno v središče smiselno povezuje kraje tragedije z muzejem. Obeležje predstavlja premor v vsakdanjem življenju mesta, povabilo k sodelovanju in obogatitev skupnosti z motnjo, ki jo je treba prepoznati in sprejeti kot pomemben del mesta.
+
+Kot svetilnik povezuje mesto z njegovo zgodovino, ki jo obiskovalci spoznavajo v muzejski stavbi nasproti spomenika. Obeležje ni muzej, obremenjen z vsemi informacijami, temveč predstavlja bistvo — resnično fizično manifestacijo konkretnega tragičnega dogodka in njegovih žrtev.
+
+Spominsko obeležje in njegova okolica bosta ponoči osvetljena, da bosta sijala v temi. Območje bo dopolnjeno z novo tlakovano ureditvijo, ki lahko vključuje tudi cestišče in pločnike. Obeležje je osrednja točka prostora; deluje kot fizični in zgodovinski klicaj — izrazito vidno, usmerja pozornost k tragediji, s svojo brezčasno monumentalno zasnovo pa ostaja tudi lahko zapomnljivo.
+
+Okolica postane del celotne izkušnje. Obeležje s svojo prisotnostjo spodbuja širše razumevanje tragedije prek povezav s sekundarnimi lokacijami. Vsaka od teh lokacij bo opremljena s ploščo iz rdečega poliranega granita z opisnim besedilom, tako da bodo vsi kraji samostojni, a hkrati povezani v enotno izkušnjo. Plošča bo opremljena z digitalnim označevalcem, ki bo lokacije povezoval v pešpot z možnostjo zvočne in virtualne izkušnje. Kjer bo mogoče, bo ustvarjena tudi krajinska ureditev, prilagojena posamezni lokaciji.</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mobile-gallery" class="hidden"></section>
+
+
+
+        <!-- Back Link -->
+        <section class="max-w-[1920px] mx-auto px-6 md:px-20 py-20 border-t border-outline-variant flex justify-center reveal">
+            <a href="../work.html" class="font-label text-[12px] uppercase tracking-[0.3em] text-on-surface hover:text-primary transition-colors duration-500" data-i18n="Back to Projects">
+                Back to Projects
+            </a>
+        </section>
+    </main>
+
+        <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-[#F5F3EF] px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Studio">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br/>
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Contact">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com" class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br/>
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Social">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Instagram">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Facebook">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="X">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../index.html" data-i18n="Home">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../work.html" data-i18n="Work">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../news.html" data-i18n="Journal">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../profile.html" data-i18n="Profile">Profile</a>
+                
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../media.html" data-i18n="Media">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                © 2026 GREGA VEZJAK ARHITEKT.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../asset/js/i18n.js"></script>    <script src="../asset/js/slider.js"></script>
+    <script src="../asset/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const toggleMenu = (isOpen) => {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', () => toggleMenu(true));
+            mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+
+            <!-- Image slider removed for debugging --></script>
+</body>
+</html>
+
+

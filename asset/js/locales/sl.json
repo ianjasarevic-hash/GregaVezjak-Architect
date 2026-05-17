@@ -1,0 +1,28 @@
+{
+    "nav": {
+        "work": "Dela",
+        "news": "Novice",
+        "profile": "Profil",
+        "media": "Mediji"
+    },
+    "home": {
+        "selectedWork": "Izbrana Dela"
+    },
+    "footer": {
+        "studio": "Studio",
+        "contact": "Kontakt",
+        "social": "Socialna Omrežja",
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "x": "X"
+    },
+    "project": {
+        "location": "Lokacija",
+        "year": "Leto",
+        "status": "Status",
+        "backToProjects": "Nazaj k Projektom"
+    },
+    "common": {
+        "contact": "Kontakt"
+    }
+}

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Journal — Grega Vezjak Architecture</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "on-tertiary-container": "#4c4a46",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary": "#605e5a",
+                        "outline": "#7c766c",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f0ec",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484742",
+                        "surface-container-highest": "#e4e2de",
+                        "on-secondary-container": "#626363",
+                        "tertiary-fixed": "#e6e2dc",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#695d43",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "tertiary-container": "#bdbab4",
+                        "outline-variant": "#cdc5b9",
+                        "surface-variant": "#e4e2de",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-surface": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-low": "#f5f3ef",
+                        "surface": "#fbf9f5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#544931",
+                        "on-primary-fixed-variant": "#50462e",
+                        "surface-bright": "#fbf9f5",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "tertiary-fixed-dim": "#cac6c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-background": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "secondary-container": "#e0dfdf",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#d4c5a5",
+                        "surface-tint": "#695d43",
+                        "primary-fixed": "#f1e1c0",
+                        "on-primary-fixed": "#221b06",
+                        "primary-fixed-dim": "#d4c5a5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "newsreader": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-container-low text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl transition-transform duration-500">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-7">
+            <a class="font-['Newsreader'] text-xl md:text-3xl font-normal text-[#1A1A1A] tracking-tighter" href="index.html">Grega Vezjak Arhitekt</a>
+            <div class="desktop-nav flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[18px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="work.html" data-i18n="Work">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[18px] text-[#C8B99A] border-b border-[#C8B99A] pb-1 transition-colors duration-300" href="news.html" data-i18n="News">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[18px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="profile.html" data-i18n="Profile">Profile</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[18px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="media.html" data-i18n="Media">Media</a>
+                <!-- Language Toggle -->
+                <div class="flex items-center gap-1 ml-2">
+                    <button id="btn-en-1" class="font-['Newsreader'] text-[12px] uppercase tracking-[0.15em] transition-colors duration-300 cursor-pointer" data-lang="en" onclick="I18n.switchLanguage('en')">EN</button>
+                    <span class="text-[#1A1A1A]">|</span>
+                    <button id="btn-sl-1" class="font-['Newsreader'] text-[12px] uppercase tracking-[0.15em] hover:text-[#C8B99A] transition-colors duration-300 cursor-pointer" data-lang="sl" onclick="I18n.switchLanguage('sl')">SL</button>
+                </div>
+            </div>
+            <button id="mobile-menu-open" class="mobile-hamburger text-[#1A1A1A] p-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#F5F3EF]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="index.html" data-i18n="Home">Home</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="work.html" data-i18n="Work">Work</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="news.html" data-i18n="News">News</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="profile.html" data-i18n="Profile">Profile</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="media.html" data-i18n="Media">Media</a>
+        <div class="flex items-center gap-2">
+            <button id="btn-en-2" class="font-[Newsreader] text-[12px] uppercase tracking-[0.15em] transition-colors duration-300 cursor-pointer lang-toggle" data-lang="en" onclick="I18n.switchLanguage('en')">EN</button>
+            <span class="text-[#C8B99A]">|</span>
+            <button id="btn-sl-2" class="font-[Newsreader] text-[12px] uppercase tracking-[0.15em] hover:text-[#C8B99A] transition-colors duration-300 cursor-pointer lang-toggle" data-lang="sl" onclick="I18n.switchLanguage('sl')">SL</button>
+        </div>
+    </div>
+
+    <main class="pt-40 pb-24 px-8 md:px-20 max-w-[1600px] mx-auto">
+        <!-- Section Heading -->
+        <header class="mb-24 reveal">
+            <h1 class="font-headline text-[48px] md:text-[64px] font-light leading-none tracking-tight" data-i18n="Journal">Journal</h1>
+            <div class="w-24 h-[1px] bg-outline-variant mt-8"></div>
+        </header>
+
+        <!-- News Feed Grid -->
+        <section class="space-y-32">
+            <!-- Entry 01 - October 15, 2023 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">01</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/tri-an-monument-dedication.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="Tri-An Monument Dedication" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/71128752007-monument-01-sam.webp"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Monument</span>
+                    <a href="news/tri-an-monument-dedication.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Tri-An Monument Dedication</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Several hundred people attended the Tri An Monument dedication ceremony at the Veterans Memorial Park in Jeffersontown, Ky. on Oct. 9, 2023.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">October 15, 2023</span>
+                </div>
+            </article>
+
+            <!-- Entry 02 - July 15, 2023 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">02</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/budin-house-structure.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="BUDIN HOUSE STRUCTURE" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/IMG-9169-scaled.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Residential</span>
+                    <a href="news/budin-house-structure.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Budin House Structure Completes</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Structure of the Budin House is complete and waits for finishing works.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">July 15, 2023</span>
+                </div>
+            </article>
+
+            <!-- Entry 03 - June 15, 2023 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">03</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/oi-manawa-award.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="OI MANAWA AWARD" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/oi-manawa-award-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Award</span>
+                    <a href="news/oi-manawa-award.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Oi Manawa Wins NZ Property Council Awards</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Oi Manawa received both the Resene Urban Design Award and the Property Award.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">June 15, 2023</span>
+                </div>
+            </article>
+
+            <!-- Entry 04 - April 25, 2023 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">04</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/tri-an-monument-construction.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="CONSTRUCTION OF THE TRI AN MONUMENT" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/IMG_6278.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Construction</span>
+                    <a href="news/tri-an-monument-construction.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Construction of the Tri An Monument</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Construction of the Tri An Monument is underway in Jeffersontown, Kentucky.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">April 25, 2023</span>
+                </div>
+            </article>
+
+            <!-- Entry 05 - December 16, 2022 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">05</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/tri-an-monument-construction-begins.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="TRI AN MONUMENT CONSTRUCTION BEGINS" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/sod-turning-1-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Groundbreaking</span>
+                    <a href="news/tri-an-monument-construction-begins.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Tri An Monument Construction Begins</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">The city of Jeffersontown broke ground on a new monument honoring Vietnam War veterans.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">December 16, 2022</span>
+                </div>
+            </article>
+
+            <!-- Entry 07 - December 24, 2020 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">07</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/happy-2021.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="HAPPY 2021!" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/IMG_3361-scaled.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Studio</span>
+                    <a href="news/happy-2021.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Happy 2021!</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Merry Christmas and Happy New Year from Grega Vezjak Architecture.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">December 24, 2020</span>
+                </div>
+            </article>
+
+            <!-- Entry 08 - December 18, 2020 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">08</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/house-41-completes.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="HOUSE 41 COMPLETES" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/176637211_1423971281269496_926822275510846751_n.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Residential</span>
+                    <a href="news/house-41-completes.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">House 41 Completes</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">The construction of House 41 in Velike Zablje, Slovenia, is now complete.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">December 18, 2020</span>
+                </div>
+            </article>
+
+            <!-- Entry 09 - August 20, 2020 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">09</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/house-41-tops-out.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="HOUSE 41 TOPS OUT" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/house-41-tops-out-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Residential</span>
+                    <a href="news/house-41-tops-out.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">House 41 Tops Out</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Construction of the rooftop terrace marks the topping-out of House 41.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">August 20, 2020</span>
+                </div>
+            </article>
+
+            <!-- Entry 10 - July 10, 2019 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">10</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/orehovlje-village-park.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="OREHOVLJE PARK" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/orehovlje-park-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Public Space</span>
+                    <a href="news/orehovlje-village-park.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Orehovlje Village Park</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Grega Vezjak was approached by Orehovlje Community Council to design a public park.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">July 10, 2019</span>
+                </div>
+            </article>
+
+            <!-- Entry 11 - June 20, 2019 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">11</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/new-place-for-st-anthony-statue.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="ST ANTHONY STATUE" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/st-anthony-statue-2.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Religious</span>
+                    <a href="news/new-place-for-st-anthony-statue.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">New Place for St. Anthony of Padua Statue</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Selecting a location and designing a plinth for a restored statue of St. Anthony of Padua.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">June 20, 2019</span>
+                </div>
+            </article>
+
+            <!-- Entry 12 - December 24, 2019 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">12</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/merry-christmas.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="MERRY CHRISTMAS" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/merry-christmas-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Studio</span>
+                    <a href="news/merry-christmas.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Merry Christmas and Happy New Year 2018</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Nativity scene in St. Antony church in Bilje set up by Grega Vezjak.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">December 24, 2019</span>
+                </div>
+            </article>
+
+            <!-- Entry 13 - October 12, 2018 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">13</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/presentation-european-parliament.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="EUROPEAN PARLIAMENT" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/european-parliament-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Award</span>
+                    <a href="news/presentation-european-parliament.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Presentation at the European Parliament</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Presentation at European Parliament for the Pan-European Memorial.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">October 12, 2018</span>
+                </div>
+            </article>
+
+            <!-- Entry 14 - March 15, 2018 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">14</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/young-architects-in-competitions.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="YOUNG ARCHITECTS" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/young-architects-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Publication</span>
+                    <a href="news/young-architects-in-competitions.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Young Architects in Competitions</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Honored to be included in a new book Young Architects in Competitions.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">March 15, 2018</span>
+                </div>
+            </article>
+
+            <!-- Entry 15 - December 24, 2017 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">15</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/merry-christmas-2017.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="MERRY CHRISTMAS 2017" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/christmas-2017-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Studio</span>
+                    <a href="news/merry-christmas-2017.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Merry Christmas and Happy New Year 2017</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">A Christmas greeting with nativity scene in St. Antony church in Bilje.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">December 24, 2017</span>
+                </div>
+            </article>
+
+            <!-- Entry 16 - February 22, 2017 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">16</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/canterbury-earthquake-national-memorial-unveiled.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="CANTERBURY MEMORIAL UNVEILED" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/canterbury-unveiled-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Memorial</span>
+                    <a href="news/canterbury-earthquake-national-memorial-unveiled.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Canterbury Earthquake National Memorial Unveiled</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">The Canterbury Earthquake National Memorial was dedicated in an emotional ceremony.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">February 22, 2017</span>
+                </div>
+            </article>
+
+            <!-- Entry 17 - January 15, 2017 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">17</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/tri-an-monument-competition.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="TRI AN COMPETITION" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/tri-an-competition-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Monument</span>
+                    <a href="news/tri-an-monument-competition.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Grega Vezjak Wins Tri An Monument Competition</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Grega Vezjak's design was selected from 128 entries for a monument at Veterans Memorial Park.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">January 15, 2017</span>
+                </div>
+            </article>
+
+            <!-- Entry 18 - December 5, 2016 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">18</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/final-inscribed-panel-placed-front-memorial-wall.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="FINAL PANEL PLACED" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/final-inscribed-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Memorial</span>
+                    <a href="news/final-inscribed-panel-placed-front-memorial-wall.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Final Inscribed Panel Placed on Front of Memorial Wall</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">The final inscribed marble panel was placed on the Canterbury Earthquake National Memorial.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">December 5, 2016</span>
+                </div>
+            </article>
+
+            <!-- Entry 19 - November 15, 2016 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">19</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/canterbury-earthquake-national-memorial-construction.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="CANTERBURY CONSTRUCTION" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/sheetpilling.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Memorial</span>
+                    <a href="news/canterbury-earthquake-national-memorial-construction.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Canterbury Earthquake National Memorial Construction</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Work on the Canterbury Earthquake National Memorial is under way.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">November 15, 2016</span>
+                </div>
+            </article>
+
+            <!-- Entry 20 - December 24, 2016 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">20</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/merry-christmas-2016.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="MERRY CHRISTMAS 2016" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/christmas-2016-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Studio</span>
+                    <a href="news/merry-christmas-2016.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Merry Christmas</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Nativity scene in St. Antony church in Bilje by Grega Vezjak.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">December 24, 2016</span>
+                </div>
+            </article>
+
+            <!-- Entry 21 - August 20, 2016 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">21</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/tri-monument-competition-finalist.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="TRI FINALIST" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/tri-an-finalist-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Monument</span>
+                    <a href="news/tri-monument-competition-finalist.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Tri An Monument Competition Finalist</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Grega Vezjak was selected as one of three finalists in the Tri An Monument competition.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">August 20, 2016</span>
+                </div>
+            </article>
+
+            <!-- Entry 22 - June 19, 2017 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">22</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/tri-an-monument-groundbreaking.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="TRI AN GROUNDBREAKING" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/tri-an-groundbreaking-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Monument</span>
+                    <a href="news/tri-an-monument-groundbreaking.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Tri An Monument Groundbreaking</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Officials broke ground on the Tri An Monument at Veterans Memorial Park.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">June 19, 2017</span>
+                </div>
+            </article>
+
+            <!-- Entry 23 - May 12, 2016 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">23</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/earthquake-memorial-site-visit.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="SITE VISIT" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/IMG_2574-e1473261143246.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Memorial</span>
+                    <a href="news/earthquake-memorial-site-visit.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Earthquake Memorial Site Visit</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Grega Vezjak visited the Canterbury Earthquake National Memorial construction site.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">May 12, 2016</span>
+                </div>
+            </article>
+
+            <!-- Entry 24 - February 15, 2016 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">24</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/canterbury-earthquake-memorial-documentary.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="CANTERBURY DOCUMENTARY" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/canterbury-memorial-doc-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Documentary</span>
+                    <a href="news/canterbury-earthquake-memorial-documentary.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Canterbury Earthquake Memorial Documentary</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Grega Vezjak spoke with Belmont Productions about the Canterbury Earthquake Memorial.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">February 15, 2016</span>
+                </div>
+            </article>
+
+            <!-- Entry 25 - February 20, 2016 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">25</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/north-bank-of-canterbury-earthquake-memorial-opens.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="NORTH BANK OPENS" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/north-bank-opens-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Memorial</span>
+                    <a href="news/north-bank-of-canterbury-earthquake-memorial-opens.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">North Bank of the Canterbury Earthquake National Memorial Opens</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">The north bank reflective space opened before the fifth anniversary.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">February 20, 2016</span>
+                </div>
+            </article>
+
+            <!-- Entry 26 - November 12, 2015 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">26</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/design-and-location-of-the-canterbury-earthquake-memorial.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="CANTERBURY DESIGN" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/eqm-map-20151112.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Memorial</span>
+                    <a href="news/design-and-location-of-the-canterbury-earthquake-memorial.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Design and Location of the Canterbury Earthquake Memorial</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Video introduction of the Canterbury Earthquake Memorial and its designer.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">November 12, 2015</span>
+                </div>
+            </article>
+
+            <!-- Entry 27 - November 10, 2015 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">27</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/canterbury-earthquake-memorial.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="CANTERBURY MEMORIAL" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/eqm6-e1456826976462.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Memorial</span>
+                    <a href="news/canterbury-earthquake-memorial.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Design by Grega Vezjak Chosen for Canterbury Earthquake Memorial</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Grega Vezjak's design was selected from six shortlisted designs from 37 countries.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">November 10, 2015</span>
+                </div>
+            </article>
+
+            <!-- Entry 28 - October 5, 2015 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">28</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/design-for-the-canterbury-earthquake-memorial-at-a-display-in-the-christchurch-botanic-gardens.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="CANTERBURY DISPLAY" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/IMG_20160213_100518-e1464354155810.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Memorial</span>
+                    <a href="news/design-for-the-canterbury-earthquake-memorial-at-a-display-in-the-christchurch-botanic-gardens.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Design for the Canterbury Earthquake Memorial at Display</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">The display showcases the design for the Canterbury Earthquake Memorial Wall.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">October 5, 2015</span>
+                </div>
+            </article>
+
+            <!-- Entry 29 - December 25, 2015 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">29</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/merry-christmas-and-happy-new-year.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="MERRY CHRISTMAS 2015" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/christmas-2015-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Studio</span>
+                    <a href="news/merry-christmas-and-happy-new-year.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Merry Christmas and Happy 2016</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Grega Vezjak setting up the Nativity scene in St. Anthony church.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">December 25, 2015</span>
+                </div>
+            </article>
+
+            <!-- Entry 30 - April 10, 2015 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">30</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/ground-breaking-ceremony-for-the-canterbury-earthquake-national-memorial.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="GROUND BREAKING CEREMONY" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/CTku6J8XIAAyJDo.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Memorial</span>
+                    <a href="news/ground-breaking-ceremony-for-the-canterbury-earthquake-national-memorial.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Groundbreaking Ceremony for the Canterbury Earthquake National Memorial</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Work began on the Canterbury Earthquake National Memorial in Christchurch.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">April 10, 2015</span>
+                </div>
+            </article>
+
+            <!-- Entry 31 - A Place to Remember -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">31</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/place-remember-documentary.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="A PLACE TO REMEMBER" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/place-remember-documentary-1.png"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Documentary</span>
+                    <a href="news/place-remember-documentary.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">A Place to Remember</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Documentary about making the Canterbury Earthquake National Memorial.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">February 22, 2017</span>
+                </div>
+            </article>
+
+            <!-- Entry 32 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">32</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/pan-european-memorial.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="PAN-EUROPEAN MEMORIAL" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/pan-european-memorial-1.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Memorial</span>
+                    <a href="news/pan-european-memorial.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Pan-European Memorial for Victims of Totalitarianism</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">A memorial to honor victims of totalitarian regimes across Europe.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">September 8, 2019</span>
+                </div>
+            </article>
+
+            <!-- Entry 33 -->
+            <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start border-t border-outline-variant pt-16 group reveal">
+                <div class="md:col-span-1">
+                    <span class="font-headline text-4xl text-outline-variant">33</span>
+                </div>
+                <div class="md:col-span-6">
+                    <a href="news/orehovlje-park.html" class="block aspect-[16/9] overflow-hidden scale-hover">
+                        <img alt="OREHOVLJE PARK" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="asset/images/news/orehovlje-park-2.jpg"/>
+                    </a>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <span class="font-label text-[11px] uppercase tracking-[0.2em] text-on-surface-variant mb-4">News / Public Space</span>
+                    <a href="news/orehovlje-park.html">
+                        <h3 class="font-headline text-[28px] md:text-[32px] leading-snug mb-4 group-hover:underline decoration-primary underline-offset-8 transition-all duration-500">Orehovlje Village Park</h3>
+                    </a>
+                    <p class="font-body text-[15px] text-secondary leading-relaxed mb-6">Work has started on an outdoor public place in Orehovlje, Slovenia.</p>
+                    <span class="font-label text-[12px] uppercase tracking-widest text-outline">September 8, 2019</span>
+                </div>
+            </article>
+
+            <!-- Pagination -->
+            <div class="mt-32 flex justify-center">
+                <span class="font-label text-[12px] uppercase tracking-widest text-outline">End of Journal</span>
+            </div>
+        </section>
+
+        <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-[#F5F3EF] px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Studio">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br/>
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Contact">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com" class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br/>
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Social">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Instagram">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Facebook">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="X">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="index.html" data-i18n="Home">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="work.html" data-i18n="Work">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-[#1A1A1A] font-bold" href="news.html" data-i18n="Journal">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="profile.html" data-i18n="Profile">Profile</a>
+
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="media.html" data-i18n="Media">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                &copy; 2026 GREGA VEZJAK ARHITEKT.
+            </p>
+        </div>
+    </footer>
+
+    <script src="asset/js/i18n.js"></script>
+    <script src="asset/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const toggleMenu = (isOpen) => {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', () => toggleMenu(true));
+            mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+
+            // Language toggle visual feedback
+            function updateLangButtons() {
+                const lang = I18n.currentLang;
+                const btnEn1 = document.getElementById('btn-en-1');
+                const btnSl1 = document.getElementById('btn-sl-1');
+                const btnEn2 = document.getElementById('btn-en-2');
+                const btnSl2 = document.getElementById('btn-sl-2');
+
+                if (btnEn1) btnEn1.style.color = lang === 'en' ? '#C8B99A' : '';
+                if (btnSl1) btnSl1.style.color = lang === 'sl' ? '#C8B99A' : '';
+                if (btnEn2) btnEn2.style.color = lang === 'en' ? '#C8B99A' : '';
+                if (btnSl2) btnSl2.style.color = lang === 'sl' ? '#C8B99A' : '';
+            }
+
+            // Update on language change
+            const originalSwitch = I18n.switchLanguage;
+            I18n.switchLanguage = function(lang) {
+                originalSwitch.call(this, lang);
+                updateLangButtons();
+            };
+
+            const btnEn1 = document.getElementById('btn-en-1');
+            const btnSl1 = document.getElementById('btn-sl-1');
+            const btnEn2 = document.getElementById('btn-en-2');
+            const btnSl2 = document.getElementById('btn-sl-2');
+            if (btnEn1) btnEn1.addEventListener('click', () => I18n.switchLanguage('en'));
+            if (btnSl1) btnSl1.addEventListener('click', () => I18n.switchLanguage('sl'));
+            if (btnEn2) btnEn2.addEventListener('click', () => I18n.switchLanguage('en'));
+            if (btnSl2) btnSl2.addEventListener('click', () => I18n.switchLanguage('sl'));
+
+            // Set initial button state
+            updateLangButtons();
+
+            // Close menu on link click
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => toggleMenu(false));
+            });
+        });
+    </script>
+</body>
+</html>

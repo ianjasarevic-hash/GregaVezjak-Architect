@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Work â€” Grega Vezjak Architecture</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "on-tertiary-container": "#4c4a46",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary": "#605e5a",
+                        "outline": "#7c766c",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f0ec",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484742",
+                        "surface-container-highest": "#e4e2de",
+                        "on-secondary-container": "#626363",
+                        "tertiary-fixed": "#e6e2dc",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#695d43",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "tertiary-container": "#bdbab4",
+                        "outline-variant": "#cdc5b9",
+                        "surface-variant": "#e4e2de",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-surface": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-low": "#f5f3ef",
+                        "surface": "#fbf9f5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#544931",
+                        "on-primary-fixed-variant": "#50462e",
+                        "surface-bright": "#fbf9f5",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "tertiary-fixed-dim": "#cac6c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-background": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "secondary-container": "#e0dfdf",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#d4c5a5",
+                        "surface-tint": "#695d43",
+                        "primary-fixed": "#f1e1c0",
+                        "on-primary-fixed": "#221b06",
+                        "primary-fixed-dim": "#d4c5a5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl transition-transform duration-500">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-5">
+            <a class="font-['Newsreader'] text-xl md:text-3xl font-normal text-[#1A1A1A] tracking-tighter" href="index.html">Grega Vezjak Arhitekt</a>
+            <div class="desktop-nav flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[17px] text-[#C8B99A] border-b border-[#C8B99A] pb-1 transition-colors duration-300" href="work.html" data-i18n="Work">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[17px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="news.html" data-i18n="News">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[17px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="profile.html" data-i18n="Profile">Profile</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-xs md:text-[17px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="media.html" data-i18n="Media">Media</a>
+                <!-- Language Toggle -->
+                <div class="flex items-center gap-1 ml-2">
+                    <button id="btn-en-1" class="font-['Newsreader'] text-xs md:text-[12px] uppercase tracking-[0.15em] transition-colors duration-300 cursor-pointer p-2 md:p-0" data-lang="en" onclick="I18n.switchLanguage('en')">EN</button>
+                    <span class="text-[#1A1A1A] hidden md:inline">|</span>
+                    <button id="btn-sl-1" class="font-['Newsreader'] text-xs md:text-[12px] uppercase tracking-[0.15em] hover:text-[#C8B99A] transition-colors duration-300 cursor-pointer p-2 md:p-0" data-lang="sl" onclick="I18n.switchLanguage('sl')">SL</button>
+                </div>
+            </div>
+            <button id="mobile-menu-open" class="mobile-hamburger text-[#1A1A1A] p-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-white/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="index.html" data-i18n="Home">Home</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="work.html" data-i18n="Work">Work</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="news.html" data-i18n="News">News</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="profile.html" data-i18n="Profile">Profile</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="media.html" data-i18n="Media">Media</a>
+    </div>
+
+    <main class="pt-40 md:pt-56 pb-20 px-6 md:px-20">
+        <!-- Page Header -->
+        <header class="max-w-4xl mb-16 md:mb-24 reveal">
+            <h1 class="font-headline text-5xl md:text-8xl font-light text-on-surface" data-i18n="Work">Work</h1>
+        </header>
+
+        <!-- Project Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+
+            <!-- Project 1 -->
+            <a href="work/st-nicholas-bell-tower.html" class="group block">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="ST NICHOLAS BELL TOWER" class="w-full h-full object-cover" src="asset/image/work/st-nicholas-bell-tower-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">St Nicholas Bell Tower</h2>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="work/budin-house.html" class="group block">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="BUDIN HOUSE" class="w-full h-full object-cover" src="asset/image/work/budin-house-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Budin House</h2>
+            </a>
+
+            <!-- Project 3 -->
+            <a href="work/memorial-to-the-victims-of-the-1871-chinese-massacre.html" class="group block project-card" data-project="memorial-to-the-victims-of-the-1871-chinese-massacre">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="1871 CHINESE MASSACRE MEMORIAL" class="project-img w-full h-full object-cover" src="asset/image/work/memorial-to-the-victims-of-the-1871-chinese-massacre-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">1871 Chinese Massacre Memorial</h2>
+            </a>
+
+            <!-- Project 4 -->
+            <a href="work/ustje-house.html" class="group block project-card" data-project="ustje-house">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="USTJE HOUSE" class="project-img w-full h-full object-cover" src="asset/image/work/ustje-house-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Ustje House</h2>
+            </a>
+
+            <!-- Project 5 -->
+            <a href="work/house-41.html" class="group block project-card" data-project="house-41">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="HOUSE 41" class="project-img w-full h-full object-cover" src="asset/image/work/house-41-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">House 41</h2>
+            </a>
+
+            <!-- Project 6 -->
+            <a href="work/urban-confluence-silicon-valley.html" class="group block project-card" data-project="urban-confluence-silicon-valley">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="URBAN CONFLUENCE" class="project-img w-full h-full object-cover" src="asset/image/work/urban-confluence-silicon-valley-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Urban Confluence</h2>
+            </a>
+
+            <!-- Project 7 -->
+            <a href="work/two-family-house-in-predoslje.html" class="group block project-card" data-project="two-family-house-in-predoslje">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="TWO-FAMILY HOUSE" class="project-img w-full h-full object-cover" src="asset/image/work/two-family-house-in-predoslje-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Two-Family House</h2>
+            </a>
+
+            <!-- Project 8 -->
+            <a href="work/pan-european-memorial-victims-totalitarianism.html" class="group block project-card" data-project="pan-european-memorial-victims-totalitarianism">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="PAN-EUROPEAN MEMORIAL" class="project-img w-full h-full object-cover" src="asset/image/work/pan-european-memorial-victims-totalitarianism-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Pan-European Memorial</h2>
+            </a>
+
+            <!-- Project 9 -->
+            <a href="work/oi-manawa.html" class="group block project-card" data-project="oi-manawa">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="OI MANAWA" class="project-img w-full h-full object-cover" src="asset/image/work/oi-manawa-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Oi Manawa</h2>
+            </a>
+
+            <!-- Project 10 -->
+            <a href="work/tisina-house.html" class="group block project-card" data-project="tisina-house">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="TISINA HOUSE" class="project-img w-full h-full object-cover" src="asset/image/work/tisina-house-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Tisina House</h2>
+            </a>
+
+            <!-- Project 11 -->
+            <a href="work/canterbury-earthquake-national-memorial-north-bank.html" class="group block project-card" data-project="canterbury-earthquake-national-memorial-north-bank">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="NORTH BANK" class="project-img w-full h-full object-cover" src="asset/image/work/canterbury-earthquake-national-memorial-north-bank-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">North Bank Memorial</h2>
+            </a>
+
+            <!-- Project 12 -->
+            <a href="work/kavcic-house.html" class="group block project-card" data-project="kavcic-house">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="KAVCIC HOUSE" class="project-img w-full h-full object-cover" src="asset/image/work/kavcic-house-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Kavcic House</h2>
+            </a>
+
+            <!-- Project 13 -->
+            <a href="work/tri-an.html" class="group block project-card" data-project="tri-an">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="TRI AN" class="project-img w-full h-full object-cover" src="asset/image/work/tri-an-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Tri an</h2>
+            </a>
+
+            <!-- Project 14 -->
+            <a href="work/tri-an-monument.html" class="group block project-card" data-project="tri-an-monument">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="TRI AN MONUMENT" class="project-img w-full h-full object-cover" src="asset/image/work/tri-an-monument-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Tri an Monument</h2>
+            </a>
+
+            <!-- Project 15 -->
+            <a href="work/canterbury-earthquake-memorial.html" class="group block project-card" data-project="canterbury-earthquake-memorial">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="CANTERBURY EARTHQUAKE MEMORIAL" class="project-img w-full h-full object-cover" src="asset/image/work/canterbury-earthquake-memorial-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Canterbury Earthquake Memorial</h2>
+            </a>
+
+            <!-- Project 16 -->
+            <a href="work/orehovlje-village-park.html" class="group block project-card" data-project="orehovlje-village-park">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="OREHOVLJE" class="project-img w-full h-full object-cover" src="asset/image/work/orehovlje-village-park-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Orehovlje Park</h2>
+            </a>
+
+            <!-- Project 17 -->
+            <a href="work/kopisce-memorial.html" class="group block project-card" data-project="kopisce-memorial">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="KOPISCE" class="project-img w-full h-full object-cover" src="asset/image/work/kopisce-memorial-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Kopisce Memorial</h2>
+            </a>
+
+            <!-- Project 18 -->
+            <a href="work/antonina-house.html" class="group block project-card" data-project="antonina-house">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="ANTONINA HOUSE" class="project-img w-full h-full object-cover" src="asset/image/work/antonina-house-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Antonina House</h2>
+            </a>
+
+            <!-- Project 19 -->
+            <a href="work/little-garden-house.html" class="group block project-card" data-project="little-garden-house">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="LITTLE GARDEN HOUSE" class="project-img w-full h-full object-cover" src="asset/image/work/little-garden-house-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Little Garden House</h2>
+            </a>
+
+            <!-- Project 20 -->
+            <a href="work/local-comunity-cezsoca.html" class="group block project-card" data-project="local-comunity-cezsoca">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="CEZSOCA" class="project-img w-full h-full object-cover" src="asset/image/work/local-comunity-cezsoca-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Cezsoca</h2>
+            </a>
+
+            <!-- Project 21 -->
+            <a href="work/house-bilje.html" class="group block project-card" data-project="house-bilje">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="HOUSE IN BILJE" class="project-img w-full h-full object-cover" src="asset/image/work/house-bilje-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">House Bilje</h2>
+            </a>
+
+            <!-- Project 22 -->
+            <a href="work/student-housing-nova-gorica.html" class="group block project-card" data-project="student-housing-nova-gorica">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="STUDENT HOUSING" class="project-img w-full h-full object-cover" src="asset/image/work/student-housing-nova-gorica-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Student Housing</h2>
+            </a>
+
+            <!-- Project 23 -->
+            <a href="work/villa-bartolomei.html" class="group block project-card" data-project="villa-bartolomei">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="VILLA BARTOLOMEI" class="project-img w-full h-full object-cover" src="asset/image/work/villa-bartolomei-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Villa Bartolomei</h2>
+            </a>
+
+            <!-- Project 24 -->
+            <a href="work/retirement-home-idrija.html" class="group block project-card" data-project="retirement-home-idrija">
+                <div class="aspect-[3/2] overflow-hidden bg-gray-100 relative">
+                    <img alt="RETIREMENT HOME" class="project-img w-full h-full object-cover" src="asset/image/work/retirement-home-idrija-1.jpg"/>
+                </div>
+                <h2 class="font-headline text-lg mt-3 text-on-surface">Retirement Home Idrija</h2>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-white px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Studio">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br/>
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Contact">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com" class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br/>
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Social">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Instagram">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Facebook">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="X">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="index.html" data-i18n="Home">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-[#1A1A1A] font-bold" href="work.html" data-i18n="Work">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="news.html" data-i18n="Journal">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="profile.html" data-i18n="Profile">Profile</a>
+
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="media.html" data-i18n="Media">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                &copy; 2026 GREGA VEZJAK ARHITEKT.
+            </p>
+        </div>
+    </footer>
+
+    <script src="asset/js/i18n.js"></script>
+    <script src="asset/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const toggleMenu = (isOpen) => {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', () => toggleMenu(true));
+            mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+
+            // Language toggle visual feedback
+            function updateLangButtons() {
+                const lang = I18n.currentLang;
+                const btnEn1 = document.getElementById('btn-en-1');
+                const btnSl1 = document.getElementById('btn-sl-1');
+                if (btnEn1) btnEn1.style.color = lang === 'en' ? '#C8B99A' : '';
+                if (btnSl1) btnSl1.style.color = lang === 'sl' ? '#C8B99A' : '';
+            }
+
+            // Update on language change
+            const originalSwitch = I18n.switchLanguage;
+            I18n.switchLanguage = function(lang) {
+                originalSwitch.call(this, lang);
+                updateLangButtons();
+            };
+
+            // Set initial button state
+            updateLangButtons();
+        });
+    </script>
+</body>
+</html>

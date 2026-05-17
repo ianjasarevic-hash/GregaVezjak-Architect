@@ -1,0 +1,28 @@
+{
+    "nav": {
+        "work": "Work",
+        "news": "News",
+        "profile": "Profile",
+        "media": "Media"
+    },
+    "home": {
+        "selectedWork": "Selected Work"
+    },
+    "footer": {
+        "studio": "Studio",
+        "contact": "Contact",
+        "social": "Social",
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "x": "X"
+    },
+    "project": {
+        "location": "Location",
+        "year": "Year",
+        "status": "Status",
+        "backToProjects": "Back to Projects"
+    },
+    "common": {
+        "contact": "Contact"
+    }
+}

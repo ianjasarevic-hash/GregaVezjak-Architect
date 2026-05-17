@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>OI MANAWA - CANTERBURY EARTHQUAKE NATIONAL MEMORIAL Ã¢â‚¬â€ Grega Vezjak Architecture</title>
+    <link rel="stylesheet" href="../asset/css/style.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#f0eeea",
+                        "secondary": "#5e5e5e",
+                        "primary-container": "#c8b99a",
+                        "on-tertiary-container": "#4c4a46",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "tertiary": "#605e5a",
+                        "outline": "#7c766c",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#30312e",
+                        "inverse-on-surface": "#f2f0ec",
+                        "secondary-fixed": "#e3e2e2",
+                        "on-tertiary-fixed-variant": "#484742",
+                        "surface-container-highest": "#e4e2de",
+                        "on-secondary-container": "#626363",
+                        "tertiary-fixed": "#e6e2dc",
+                        "surface-dim": "#dbdad6",
+                        "primary": "#695d43",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "tertiary-container": "#bdbab4",
+                        "outline-variant": "#cdc5b9",
+                        "surface-variant": "#e4e2de",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-surface": "#1b1c1a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "surface-container-low": "#f5f3ef",
+                        "surface": "#fbf9f5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#544931",
+                        "on-primary-fixed-variant": "#50462e",
+                        "surface-bright": "#fbf9f5",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f5",
+                        "tertiary-fixed-dim": "#cac6c0",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c18",
+                        "on-background": "#1b1c1a",
+                        "on-surface-variant": "#4b463d",
+                        "secondary-container": "#e0dfdf",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#d4c5a5",
+                        "surface-tint": "#695d43",
+                        "primary-fixed": "#f1e1c0",
+                        "on-primary-fixed": "#221b06",
+                        "primary-fixed-dim": "#d4c5a5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    fontFamily: {
+                        "headline": ["Cormorant Garamond", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "mono": ["Newsreader", "serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#F5F3EF]/85 backdrop-blur-xl">
+        <div class="max-w-[1920px] mx-auto flex justify-between items-center px-6 md:px-20 py-4">
+            <a class="font-['Newsreader'] text-2xl font-normal text-[#1A1A1A] tracking-tighter" href="../index.html">Grega Vezjak Arhitekt</a>
+            <div class="desktop-nav flex items-center gap-12">
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#C8B99A] border-b border-[#C8B99A] pb-1 transition-colors duration-300" href="../work.html" data-i18n="Work">Work</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../news.html" data-i18n="News">News</a>
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../profile.html" data-i18n="Profile">Profile</a>
+                
+                <a class="font-['Newsreader'] uppercase tracking-[0.15em] text-[14px] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors duration-300" href="../media.html" data-i18n="Media">Media</a>
+                <!-- Language Toggle -->
+                <div class="flex items-center gap-1 ml-2">
+                    <button class="lang-toggle font-['Newsreader'] text-[12px] uppercase tracking-[0.15em] transition-colors duration-300 cursor-pointer"
+                        data-lang="en" onclick="I18n.switchLanguage('en')">EN</button>
+                    <span class="text-[#1A1A1A]">|</span>
+                    <button class="lang-toggle font-['Newsreader'] text-[12px] uppercase tracking-[0.15em] hover:text-[#C8B99A] transition-colors duration-300 cursor-pointer"
+                        data-lang="sl" onclick="I18n.switchLanguage('sl')">SL</button>
+                </div>
+            </div>
+            <button id="mobile-menu-open" class="mobile-hamburger text-[#1A1A1A]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-[#F5F3EF]/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none">
+        <button id="mobile-menu-close" class="absolute top-5 right-6 text-[#1A1A1A]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../index.html" data-i18n="Home">Home</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../work.html" data-i18n="Work">Work</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../news.html" data-i18n="News">News</a>
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../profile.html" data-i18n="Profile">Profile</a>
+                
+        <a class="font-headline text-2xl uppercase tracking-[0.2em] text-[#1A1A1A] hover:text-[#C8B99A] transition-colors" href="../media.html" data-i18n="Media">Media</a>
+    </div>
+
+    <main class="pt-24">
+        <!-- Hero Section with Slider -->
+        <section class="w-full h-[calc(70vh-50px)] md:h-[calc(90vh-50px)] overflow-hidden relative reveal">
+            <div id="project-slider" class="w-full h-full relative">
+                <img id="slider-img" src="../asset/image/work/oi-manawa-hero.jpg" alt="OI MANAWA" class="w-full h-full object-cover">
+                <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 flex items-center justify-center hover:bg-white transition-colors">
+                    <span class="text-2xl">&larr;</span>
+                </button>
+                <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 flex items-center justify-center hover:bg-white transition-colors">
+                    <span class="text-2xl">&rarr;</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Project Header -->
+        <section class="max-w-[1920px] mx-auto px-6 md:px-20 py-20 md:py-32">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+                <div class="md:col-span-4 reveal">
+                    <h1 class="font-headline text-4xl md:text-6xl font-light leading-tight mb-8">OI MANAWA - CANTERBURY EARTHQUAKE NATIONAL MEMORIAL</h1>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1" data-i18n="Location">Location</p>
+                            <p class="font-body text-sm text-on-surface">Christchurch, New Zealand</p>
+                        </div>
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1" data-i18n="Year">Year</p>
+                            <p class="font-body text-sm text-on-surface">2017</p>
+                        </div>
+                        <div>
+                            <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-1" data-i18n="Status">Status</p>
+                            <p class="font-body text-sm text-on-surface">built</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 md:col-start-6 reveal">
+                    <div class="font-headline text-xl md:text-2xl leading-relaxed text-on-surface-variant space-y-8 italic">
+<p lang="en">Christchurch, New Zealand</p>
+<p lang="sl">Christchurch, Nova Zelandija</p>
+<p lang="en">The Canterbury Earthquake National Memorial has been a priority for the New Zealand Government and a key feature of the city's regeneration.</p>
+<p lang="sl">Nacionalno spominsko obeleÅ¾je potresu v Canterburyju je bilo ena izmed prednostnih nalog novozelandske vlade in pomemben element prenove mesta.</p>
+<p lang="en">Oi Manawa, meaning "tremor of the heart", is a place to reflect on the 2010/2011 earthquakes that changed Greater Christchurch forever. It pays respect to those who lost their lives, those who were seriously injured and survivors. The memorial also acknowledges the shared trauma and the support received during the response and recovery that followed.</p>
+<p lang="sl">Oi Manawa, kar pomeni Â»tresljaj srcaÂ«, je prostor razmisleka o potresih v letih 2010 in 2011, ki so za vedno spremenili Å¡irÅ¡e obmoÄje Christchurcha. ObeleÅ¾je izkazuje spoÅ¡tovanje tistim, ki so izgubili Å¾ivljenje, huje poÅ¡kodovanim in preÅ¾ivelim. Hkrati priznava tudi skupno travmo ter podporo, prejeto med odzivom na nesreÄo in kasnejÅ¡o obnovo.</p>
+<p lang="en">The Canterbury Earthquake National Memorial has been designed as two distinct areas either side of the gentle curve of the ÅŒtÄkaro/Avon River. A park space on the north bank, with trees, seating and gardens looks across the river to the sunny memorial wall area on the south bank.</p>
+<p lang="sl">Nacionalno spominsko obeleÅ¾je potresu v Canterburyju je zasnovano kot dva razliÄna prostora na obeh straneh blagega zavoja reke ÅŒtÄkaro/Avon. Parkovni prostor na severnem bregu z drevesi, sediÅ¡Äi in vrtovi se prek reke odpira proti osonÄenemu obmoÄju spominskega zidu na juÅ¾nem bregu.</p>
+<p lang="en">The south bank area is a place of remembrance. Facing the sun, the memorial wall extends 112.6 metres along the curve of the ÅŒtÄkaro/Avon River. A stepped terrace with seating and maple trees separates the 3.6-metre high memorial wall from the river. The south bank area has been designed to accommodate variable river levels.</p>
+<p lang="sl">ObmoÄje juÅ¾nega brega je prostor spomina. Proti soncu usmerjeni spominski zid se v dolÅ¾ini 112,6 metra razteza vzdolÅ¾ zavoja reke ÅŒtÄkaro/Avon. StopniÄasta terasa s sediÅ¡Äi in javorji loÄuje 3,6 metra visok spominski zid od reke. JuÅ¾ni breg je zasnovan tako, da omogoÄa prilagajanje spreminjajoÄim se vodostajem reke.</p>
+<p lang="en">The park space on the north side of the river is an area where people can reflect, sit quietly, walk closer to the river and view the memorial wall area on the opposite bank. It has large established trees, new plantings and a curved seat along the path near the river. The park also provides a large gathering space for civic commemoration events. The Montreal Street bridge links the north bank and south bank areas.</p>
+<p lang="sl">Parkovni prostor na severni strani reke je obmoÄje, kjer lahko ljudje premiÅ¡ljujejo, mirno sedijo, se pribliÅ¾ajo reki in opazujejo obmoÄje spominskega zidu na nasprotnem bregu. Prostor zaznamujejo velika obstojeÄa drevesa, nove zasaditve in ukrivljena klop ob poti ob reki. Park hkrati omogoÄa veÄji zbirni prostor za javne spominske dogodke. Most Montreal Street povezuje severni in juÅ¾ni breg.</p>
+<p lang="en">"The experience of the memorial can be viewed as a journey. A place to remember and to find peace â€“ a place of past and future...</p>
+<p lang="sl">Â»IzkuÅ¡njo spominskega obeleÅ¾ja lahko razumemo kot potovanje. Kot prostor spomina in iskanja miru â€” prostor preteklosti in prihodnosti â€¦</p>
+<p lang="en">...you descend down the ramp, leaving the hustle of the city at the street level to enter a quieter space. On the sunny terrace, with the sound of the river, you can take in the memorial wall or sit among trees and mourn or reflect. This is a sheltered and serene place that bereaved family and friends, and others impacted by the earthquakes, can experience in peace...</p>
+<p lang="sl">â€¦ po klanÄini se spustite iz mestnega vrveÅ¾a na ravni ulice v tiÅ¡ji prostor. Na osonÄeni terasi, ob zvoku reke, lahko opazujete spominski zid ali sedite med drevesi ter Å¾alite in premiÅ¡ljujete. To je zaÅ¡Äiten in miren prostor, kjer lahko svojci Å¾rtev, prijatelji in vsi, ki jih je potres prizadel, v miru doÅ¾ivijo trenutek spomina â€¦</p>
+<p lang="en">The design provides a connection to the water, symbolic of life and its infinite nature. This was achieved by leaving the street area at its level, cutting into the earth and erecting a wall that enables a memorial place close to the water.</p>
+<p lang="sl">Zasnova ustvarja povezavo z vodo, simbolom Å¾ivljenja in njegove neskonÄnosti. To je bilo doseÅ¾eno tako, da raven ulice ostaja nespremenjena, prostor pa se zareÅ¾e v teren in oblikuje zid, ki omogoÄa spominski prostor tik ob vodi.</p>
+<p lang="en">Although this is a place of sadness it is also a place of beauty, graced by the gentle river flow, full sun and the delicate shadows cast by trees. The space is also a celebration of life. I hope that with its shape and space, the memorial invites and embraces people from near and far, bringing them together for remembrance.</p>
+<p lang="sl">ÄŒeprav je to prostor Å¾alosti, je hkrati anche prostor lepote, zaznamovan z neÅ¾nim tokom reke, polnim soncem in rahlimi sencami dreves. Prostor je auch praznovanje Å¾ivljenja. Upam, da spominsko obeleÅ¾je s svojo obliko in prostorom vabi in sprejema ljudi od blizu in daleÄ ter jih povezuje v skupnem spominu.</p>
+<p lang="en">Grega Vezjak</p>
+<p lang="sl">â€” Grega Vezjak</p>
+
+                    </div>
+                </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mobile-gallery" class="hidden"></section>
+
+
+
+        <!-- Back Link -->
+        <section class="max-w-[1920px] mx-auto px-6 md:px-20 py-20 border-t border-outline-variant flex justify-center reveal">
+            <a href="../work.html" class="font-label text-[12px] uppercase tracking-[0.3em] text-on-surface hover:text-primary transition-colors duration-500" data-i18n="Back to Projects">
+                Back to Projects
+            </a>
+        </section>
+    </main>
+
+        <!-- Footer -->
+    <footer class="w-full border-t border-[#DEDAD4] bg-[#F5F3EF] px-6 md:px-20 py-16">
+        <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Studio">Studio</h3>
+                <address class="not-italic text-[14px] leading-relaxed text-secondary font-body font-light">
+                    Bilje 30 A<br/>
+                    5292 Rence, Slovenia
+                </address>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Contact">Contact</h3>
+                <div class="text-[14px] leading-relaxed text-secondary font-body font-light">
+                    <a href="mailto:arhitekt@gregavezjak.com" class="hover:text-primary transition-colors">arhitekt@gregavezjak.com</a><br/>
+                    00386 51 389 933
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h3 class="font-label text-[12px] uppercase tracking-[0.2em] text-[#1A1A1A]" data-i18n="Social">Social</h3>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/gregavezjak/" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Instagram">Instagram</a>
+                    <a href="https://www.facebook.com/gregavezjakarhitekt" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="Facebook">Facebook</a>
+                    <a href="https://x.com/GregaVezjak" target="_blank" class="font-label text-[12px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" data-i18n="X">X</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-outline-variant/30">
+            <div class="flex flex-wrap justify-center md:justify-start gap-8">
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../index.html" data-i18n="Home">Home</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../work.html" data-i18n="Work">Work</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../news.html" data-i18n="Journal">Journal</a>
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../profile.html" data-i18n="Profile">Profile</a>
+                
+                <a class="font-['Inter'] text-[11px] uppercase tracking-widest text-secondary hover:text-[#1A1A1A] transition-all" href="../media.html" data-i18n="Media">Media</a>
+            </div>
+            <p class="font-['Inter'] text-[11px] uppercase tracking-widest text-outline">
+                Â© 2026 GREGA VEZJAK ARHITEKT.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../asset/js/i18n.js"></script>
+    <script src="../asset/js/slider.js"></script>
+    <script src="../asset/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuOpen = document.getElementById('mobile-menu-open');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            const toggleMenu = (isOpen) => {
+                mobileMenu.classList.toggle('opacity-0', !isOpen);
+                mobileMenu.classList.toggle('pointer-events-none', !isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileMenuOpen.addEventListener('click', () => toggleMenu(true));
+            mobileMenuClose.addEventListener('click', () => toggleMenu(false));
+
+            <!-- Image slider removed for debugging --></script>
+</body>
+</html>
